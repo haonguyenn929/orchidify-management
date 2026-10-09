@@ -19,7 +19,7 @@ type FormValues = {
 }
 
 const defaultFormValues: FormValues = {
-  role: '',
+  role: UserRole.STAFF,
   email: '',
   password: ''
 }
