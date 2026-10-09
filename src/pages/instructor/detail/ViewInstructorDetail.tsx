@@ -80,21 +80,21 @@ const ViewInstructorDetail = () => {
       <TitleWrapper>
         <div>
           <Typography variant='h5' fontSize={34} fontWeight={700}>
-            Thông tin giảng viên
+            Instructor Details
           </Typography>
           <Breadcrumbs items={breadcrumbsItems} />
         </div>
         <div style={{ display: 'flex' }}>
           <Button color='warning' onClick={handleUpdateButton} sx={{ marginRight: '24px' }}>
-            Cập nhật
+            Update
           </Button>
           {data?.status === UserStatus.ACTIVE ? (
             <Button color='error' onClick={handleOpenDeactivateDialog}>
-              Vô hiệu hóa
+              Inactive
             </Button>
           ) : (
             <Button color='secondary' onClick={handleOpenActivateDialog}>
-              Kích hoạt
+              Activate
             </Button>
           )}
         </div>
@@ -114,11 +114,11 @@ const ViewInstructorDetail = () => {
                   {data?.name}
                 </Typography>
                 <Typography variant='h6' fontSize={14} fontWeight={500} color={theme.label.secondary}>
-                  Giảng viên
+                  Instructors
                 </Typography>
               </Box>
               <Button onClick={() => navigate(protectedRoute.instructorTimesheet.path.replace(':id', data._id))}>
-                Lịch dạy
+                Teaching Schedule
               </Button>
             </Box>
             <Typography variant='h6' fontSize={14}>
@@ -130,21 +130,21 @@ const ViewInstructorDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin cá nhân
+            Personal Information
           </Typography>
           <Line theme={theme} />
         </div>
         <Box>
-          <Field label='Tên giảng viên' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
+          <Field label='Instructor Name' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
           <Field
-            label='Ngày sinh'
-            content={<ContentText>{new Date(data.dateOfBirth).toLocaleDateString('vi-VN')}</ContentText>}
+            label='Date of birth'
+            content={<ContentText>{new Date(data.dateOfBirth).toLocaleDateString('en-US')}</ContentText>}
             theme={theme}
           />
           <Field label='Email' content={<ContentText>{data?.email || ''}</ContentText>} theme={theme} />
-          <Field label='Số điện thoại' content={<ContentText>{data?.phone || ''}</ContentText>} theme={theme} />
+          <Field label='Phone number' content={<ContentText>{data?.phone || ''}</ContentText>} theme={theme} />
           <Field
-            label='Trạng thái'
+            label='Status'
             content={data ? <UserStatusTag type={UserStatus[data.status]} /> : null}
             theme={theme}
           />
@@ -153,7 +153,7 @@ const ViewInstructorDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Chứng chỉ
+            Certificates
           </Typography>
           <Line theme={theme} />
         </div>
@@ -179,7 +179,7 @@ const ViewInstructorDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Trong hệ thống
+            System Information
           </Typography>
           <Line theme={theme} />
         </div>
@@ -195,7 +195,7 @@ const ViewInstructorDetail = () => {
               {data?.name}
             </Typography>
             <Typography variant='h6' fontSize={16} fontWeight={500} color={theme.label.secondary}>
-              Số dư ví <span style={{ color: '#000000DE' }}>{formatCurrency(data.balance)}</span>
+              Wallet Balance <span style={{ color: '#000000DE' }}>{formatCurrency(data.balance)}</span>
             </Typography>
           </div>
         </Avatar>

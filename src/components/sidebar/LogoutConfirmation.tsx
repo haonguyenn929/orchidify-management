@@ -13,7 +13,7 @@ const LogoutConfirmation = ({ open, handleClose }: LogoutConfirmationProps) => {
 
   const handleConfirm = () => {
     logout()
-    notifySuccess('Đăng xuất thành công')
+    notifySuccess('Logged out successfully')
     handleClose()
   }
 
@@ -26,11 +26,11 @@ const LogoutConfirmation = ({ open, handleClose }: LogoutConfirmationProps) => {
       open={open}
       handleConfirm={handleConfirm}
       handleCancel={handleCancel}
-      title='Xác nhận đăng xuất'
-      description={APP_MESSAGE.CONFIRM_ACTION('đăng xuất')}
-      confirmButtonText='Đăng xuất'
+      title='Confirm Logout'
+      description={APP_MESSAGE.CONFIRM_ACTION('log out')}
+      confirmButtonText='Log Out'
       confirmButtonColor='error'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '444px' } }}
     />
   )

@@ -34,9 +34,11 @@ export default function ViewCourseComboList() {
   })
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: courseComboList, error: apiError } = await getCourseComboList(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -61,6 +63,7 @@ export default function ViewCourseComboList() {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getCourseComboList, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -70,9 +73,10 @@ export default function ViewCourseComboList() {
 
   return (
     <>
-      <PageHeader title='Combo khóa học' />
+      <PageHeader title='Course Combos' />
       <Table
-        title='Danh sách Combo khóa học'
+        title='Course Combo List'
+        isLoading={isLoading}
         tableOptions={{
           columns: CourseComboColumns,
           data: data.docs || [],

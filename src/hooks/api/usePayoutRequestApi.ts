@@ -54,7 +54,7 @@ export const usePayoutRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách yêu cầu rút tiền') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('payout request list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -73,7 +73,7 @@ export const usePayoutRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin yêu cầu') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('request information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -92,7 +92,7 @@ export const usePayoutRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Chấp nhận yêu cầu') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Approve Request') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -111,7 +111,7 @@ export const usePayoutRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Từ chối yêu cầu') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Reject Request') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -130,7 +130,7 @@ export const usePayoutRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Cập nhật giao dịch') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('update transaction') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

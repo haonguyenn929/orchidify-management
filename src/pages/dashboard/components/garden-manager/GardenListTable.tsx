@@ -7,14 +7,16 @@ import { Garden } from '~/data/garden.dto'
 
 interface GardenListTableProps {
   gardenData: Garden[]
+  isLoading?: boolean
 }
 
-const GardenListTable = ({ gardenData }: GardenListTableProps) => {
+const GardenListTable = ({ gardenData, isLoading }: GardenListTableProps) => {
   const navigate = useNavigate()
 
   return (
     <Table
-      title='Danh sách nhà vườn'
+      title='Garden List'
+      isLoading={isLoading}
       tableOptions={{
         columns: gardenColumns,
         data: gardenData || [],
@@ -24,7 +26,7 @@ const GardenListTable = ({ gardenData }: GardenListTableProps) => {
             variant='body1'
             sx={{ color: 'rgba(0, 0, 0, 0.6)', fontStyle: 'italic', py: '2rem', textAlign: 'center', width: '100%' }}
           >
-            Không có dữ liệu
+            No data
           </Typography>
         ),
         enableSorting: false,
@@ -61,7 +63,7 @@ export default GardenListTable
 const gardenColumns: MRT_ColumnDef<Garden>[] = [
   {
     accessorKey: 'name',
-    header: 'Mã lớp học',
+    header: 'Class Code',
     grow: true
   }
 ]

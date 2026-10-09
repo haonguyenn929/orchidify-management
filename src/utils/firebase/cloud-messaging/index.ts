@@ -1,7 +1,7 @@
-import { getMessaging, getToken } from 'firebase/messaging'
+import { getMessaging, getToken, Messaging } from 'firebase/messaging'
 import { app } from '../firebase'
 
-export const messaging = getMessaging(app)
+export const messaging: Messaging | null = app ? getMessaging(app) : null
 
 const checkAndRequestNotificationPermission = async () => {
   if (!('Notification' in window)) {
@@ -27,6 +27,7 @@ const checkAndRequestNotificationPermission = async () => {
 }
 
 export const getRegistrationToken = async () => {
+  if (!messaging) return null
   if (!(await checkAndRequestNotificationPermission())) return null
 
   try {

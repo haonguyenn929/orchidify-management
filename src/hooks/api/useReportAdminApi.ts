@@ -27,7 +27,7 @@ export const useReportAdminApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo tổng quan') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('overview report') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 
@@ -43,7 +43,7 @@ export const useReportAdminApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số lượng nhân viên theo trạng thái') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('staff count by status report') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 
@@ -65,7 +65,7 @@ export const useReportAdminApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số giao dịch trong ngày') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('daily transaction report') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -89,7 +89,7 @@ export const useReportAdminApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số doanh thu trong tháng') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('monthly revenue report') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

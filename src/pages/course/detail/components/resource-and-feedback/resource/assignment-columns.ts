@@ -4,6 +4,6 @@ import { AssignmentDto } from '~/data/course.dto'
 export const assignmentColumns: MRT_ColumnDef<AssignmentDto>[] = [
   {
     accessorKey: 'title',
-    header: 'Tên bài tập'
+    header: 'Assignment Title'
   }
 ]

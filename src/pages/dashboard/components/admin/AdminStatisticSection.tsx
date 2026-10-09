@@ -59,7 +59,7 @@ const AdminStatisticSection = () => {
     <Grid container spacing='1.875rem' marginBottom='1.25rem'>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Khóa học'
+          title='Courses'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.CourseSum)?.data.quantity as number) || 0
           }
@@ -71,7 +71,7 @@ const AdminStatisticSection = () => {
       </Grid>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Học viên'
+          title='Learners'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.LearnerSum)?.data.quantity as number) || 0
           }
@@ -83,7 +83,7 @@ const AdminStatisticSection = () => {
       </Grid>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Giảng viên'
+          title='Instructors'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.InstructorSum)?.data.quantity as number) || 0
           }
@@ -95,7 +95,7 @@ const AdminStatisticSection = () => {
       </Grid>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Doanh thu'
+          title='Revenue'
           value={formatCurrencyDashboard(
             Number(data.docs.find((item) => item.type === ReportTotalSummaryType.RevenueSum)?.data.total) || 0
           )}

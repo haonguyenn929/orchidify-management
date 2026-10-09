@@ -18,8 +18,8 @@ const defaultFormValues: FormValues = {
 const validationSchema = z.object({
   rejectReason: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Mô tả lý do từ chối'))
-    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Mô tả lý do từ chối', 500))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Rejection reason description'))
+    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Rejection reason description', 500))
 })
 
 interface RejectRequestDialogProps {
@@ -45,7 +45,7 @@ const RejectRequestDialog = ({ requestId, open, handleClose, onSuccess }: Reject
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Từ chối yêu cầu'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Reject Request'))
       onSuccess()
     }
     handleClose()
@@ -61,18 +61,18 @@ const RejectRequestDialog = ({ requestId, open, handleClose, onSuccess }: Reject
       onSubmit={handleSubmit(handleReject)}
       handleCancel={handleCancel}
       isProcessing={isSubmitting}
-      title='Xác nhận từ chối yêu cầu'
-      description={APP_MESSAGE.CONFIRM_ACTION('từ chối yêu cầu này')}
-      confirmButtonText='Từ chối'
+      title='Confirm Reject Request'
+      description={APP_MESSAGE.CONFIRM_ACTION('reject this request')}
+      confirmButtonText='Rejected'
       confirmButtonColor='error'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       formContent={
         <ControlledOutlinedInput
           controller={{ name: 'rejectReason', control: control }}
           multiline
           minRows={7}
           maxRows={7}
-          label='Mô tả lý do từ chối'
+          label='Rejection reason description'
           fullWidth
           sx={{ marginTop: '0.5rem' }}
         />

@@ -15,7 +15,7 @@ const Header = ({ instructorId }: HeaderProps) => {
     protectedRoute.instructorTimesheet
   ]
 
-  return <PageHeader title='Lịch dạy' breadcrumbsItems={breadcrumbsItems} />
+  return <PageHeader title='Teaching Schedule' breadcrumbsItems={breadcrumbsItems} />
 }
 
 export default Header

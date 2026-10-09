@@ -5,7 +5,7 @@ import { FeedbackListItemResponseDto } from '~/data/feedback.dto'
 export const feedbackColumns: MRT_ColumnDef<FeedbackListItemResponseDto>[] = [
   {
     accessorKey: 'learner.name',
-    header: 'Tên học viên',
+    header: 'Learner Name',
     size: 200,
     grow: false,
     enableColumnFilter: false,
@@ -27,7 +27,7 @@ export const feedbackColumns: MRT_ColumnDef<FeedbackListItemResponseDto>[] = [
   },
   {
     accessorKey: 'rate',
-    header: 'Sao đánh giá',
+    header: 'Rating Stars',
     size: 180,
     grow: false,
     filterVariant: 'select',
@@ -43,7 +43,7 @@ export const feedbackColumns: MRT_ColumnDef<FeedbackListItemResponseDto>[] = [
   },
   {
     accessorKey: 'comment',
-    header: 'Nhận xét',
+    header: 'Feedback',
     grow: 1,
     enableColumnFilter: false,
     enableSorting: false

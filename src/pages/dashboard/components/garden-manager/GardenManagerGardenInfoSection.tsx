@@ -30,9 +30,11 @@ const GardenManagerGardenInfoSection = () => {
   })
   const [selectedGarden, setSelectedGarden] = useState<string | null>('')
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: gardens, error: apiError } = await getAllGardens(
         1,
         99,
@@ -63,6 +65,7 @@ const GardenManagerGardenInfoSection = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllGardens])
 
@@ -76,7 +79,7 @@ const GardenManagerGardenInfoSection = () => {
         <Grid container spacing={2.5} direction={'column'}>
           <Grid item xs={12} md={6}>
             <StatisticCard
-              title='Nhà vườn'
+              title='Gardens'
               value={data.totalDocs}
               Icon={LocalFlorist}
               bgcolor='#F88C3D66'
@@ -89,19 +92,19 @@ const GardenManagerGardenInfoSection = () => {
               <Box
                 sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px' }}
               >
-                <Typography variant='h6'>Danh sách nhà vườn</Typography>
+                <Typography variant='h6'>Garden List</Typography>
                 <Typography
                   variant='caption'
                   sx={{ color: 'inherit' }}
                   component={Link}
                   to={protectedRoute.gardenList.path}
                 >
-                  Xem tất cả
+                  View all
                 </Typography>
               </Box>
               <Divider />
               <Box sx={{ padding: 3, overflow: 'auto' }}>
-                <GardenListTable gardenData={data.docs} />
+                <GardenListTable gardenData={data.docs} isLoading={isLoading} />
               </Box>
             </Paper>
           </Grid>
@@ -111,14 +114,14 @@ const GardenManagerGardenInfoSection = () => {
       <Grid item xs={12} md={6}>
         <Paper elevation={2} sx={{ height: '100%' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px' }}>
-            <Typography variant='h6'>Ngày nghỉ</Typography>
+            <Typography variant='h6'>Day Off</Typography>
             <Select
               size='small'
               displayEmpty
               value={selectedGarden}
               onChange={(e) => setSelectedGarden(e.target.value)}
             >
-              <MenuItem value=''>Chọn nhà vườn</MenuItem>
+              <MenuItem value=''>Select Garden</MenuItem>
               {data.docs.map((item) => (
                 <MenuItem key={item.name} value={item._id}>
                   {item.name}

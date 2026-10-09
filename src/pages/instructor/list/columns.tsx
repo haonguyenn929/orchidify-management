@@ -6,8 +6,8 @@ import { UserStatus } from '~/global/app-status'
 export const InstructorColumns: MRT_ColumnDef<Instructor>[] = [
   {
     accessorKey: 'name',
-    header: 'Tên giảng viên',
-    size: 250
+    header: 'Instructor Name',
+    size: 180
   },
   {
     accessorKey: 'email',
@@ -16,23 +16,23 @@ export const InstructorColumns: MRT_ColumnDef<Instructor>[] = [
   },
   {
     accessorKey: 'phone',
-    header: 'Số điện thoại',
+    header: 'Phone number',
     size: 100,
     enableColumnFilter: false
   },
   {
     accessorKey: 'dateOfBirth',
-    header: 'Ngày sinh',
+    header: 'Date of birth',
     enableColumnFilter: false,
     size: 100,
     Cell: ({ cell }) => {
       const date = new Date(cell.getValue() as unknown as string)
-      return date.toLocaleDateString('vi-VN')
+      return date.toLocaleDateString('en-US')
     }
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 150,
     Cell: ({ cell }) => {
       const type = cell.getValue() as UserStatus
@@ -40,8 +40,8 @@ export const InstructorColumns: MRT_ColumnDef<Instructor>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Hoạt động', value: UserStatus.ACTIVE },
-      { label: 'Vô hiệu hóa', value: UserStatus.INACTIVE }
+      { label: 'Active', value: UserStatus.ACTIVE },
+      { label: 'Inactive', value: UserStatus.INACTIVE }
     ]
   }
 ]

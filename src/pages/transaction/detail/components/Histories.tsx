@@ -29,7 +29,7 @@ const Histories = ({ histories }: HistoriesProps) => {
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Lịch sử cập nhật
+          Update History
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
@@ -37,13 +37,13 @@ const Histories = ({ histories }: HistoriesProps) => {
         {histories.map((history, index) => (
           <>
             <Box display='flex' flexDirection='column' gap={1} flexGrow='1'>
-              <Field label='Trạng thái' content={(history['status'] as string) || 'Không có dữ liệu'} />
+              <Field label='Status' content={(history['status'] as string) || 'No data'} />
               <Field
-                label='Thời gian tạo'
+                label='Created at'
                 content={
                   dayjs(history['createdAt'] as string).isValid()
-                    ? new Date(history['createdAt'] as string).toLocaleString('vi-VN')
-                    : 'Không có dữ liệu'
+                    ? new Date(history['createdAt'] as string).toLocaleString('en-US')
+                    : 'No data'
                 }
               />
             </Box>

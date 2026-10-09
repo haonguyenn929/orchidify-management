@@ -5,55 +5,55 @@ import { ClassListItemResponseDto } from '~/data/class.dto'
 export const classColumns: MRT_ColumnDef<ClassListItemResponseDto>[] = [
   {
     accessorKey: 'code',
-    header: 'Mã lớp học',
+    header: 'Class Code',
     size: 130,
     grow: false,
     enableColumnFilter: false
   },
   {
     accessorKey: 'course.code',
-    header: 'Mã khóa học',
+    header: 'Course Code',
     size: 140,
     grow: false,
     enableColumnFilter: false
   },
   {
     accessorKey: 'title',
-    header: 'Tên khóa học'
+    header: 'Course Name'
   },
   {
     accessorKey: 'instructor.name',
-    size: 250,
+    size: 160,
     grow: false,
-    header: 'Giảng viên',
+    header: 'Instructors',
     enableColumnFilter: false
   },
   {
     accessorKey: 'startDate',
-    header: 'Ngày bắt đầu',
+    header: 'Start date',
     enableColumnFilter: false,
-    size: 150,
+    size: 130,
     grow: false,
     Cell: ({ row }) => {
       const date = new Date(row.original.startDate)
-      return date.toLocaleDateString('vi-VN')
+      return date.toLocaleDateString('en-US')
     }
   },
   {
     accessorKey: 'duration',
-    size: 130,
+    size: 110,
     grow: false,
-    header: 'Thời lượng',
+    header: 'Duration',
     enableColumnFilter: false,
     Cell: ({ row }) => {
-      return `${row.original.duration} tuần`
+      return `${row.original.duration} weeks`
     }
   },
   {
     accessorKey: 'progress',
-    size: 110,
+    size: 130,
     grow: false,
-    header: 'Tiến độ',
+    header: 'Progress',
     enableColumnFilter: false,
     muiTableHeadCellProps: {
       align: 'right'
@@ -67,8 +67,8 @@ export const classColumns: MRT_ColumnDef<ClassListItemResponseDto>[] = [
   },
   {
     accessorKey: 'learnerQuantity',
-    header: 'Số học viên',
-    size: 140,
+    header: 'Learner Count',
+    size: 150,
     grow: false,
     muiTableHeadCellProps: {
       align: 'right'
@@ -83,7 +83,7 @@ export const classColumns: MRT_ColumnDef<ClassListItemResponseDto>[] = [
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 130,
     grow: false,
     enableColumnFilter: false,

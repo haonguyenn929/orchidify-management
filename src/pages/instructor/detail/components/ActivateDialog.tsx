@@ -23,7 +23,7 @@ const ActivateDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Kích hoạt giảng viên'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Activate Instructor'))
       onSuccess()
     }
     handleClose()
@@ -40,11 +40,11 @@ const ActivateDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
       handleConfirm={() => instructorId && handleActivate(instructorId)}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận kích hoạt'
-      description={APP_MESSAGE.CONFIRM_ACTION('kích hoạt lại tài khoản này')}
-      confirmButtonText='Kích hoạt'
+      title='Confirm Activation'
+      description={APP_MESSAGE.CONFIRM_ACTION('reactivate this account')}
+      confirmButtonText='Activate'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

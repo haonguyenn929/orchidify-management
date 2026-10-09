@@ -14,4 +14,6 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig)
+export const isFirebaseConfigured = Boolean(firebaseConfig.projectId && firebaseConfig.apiKey)
+
+export const app = isFirebaseConfigured ? initializeApp(firebaseConfig) : null

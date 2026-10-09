@@ -55,7 +55,7 @@ const Sidebar = ({ open, drawerwidth }: SidebarProps) => {
             onClick={handleOpenDialog}
           >
             <ListItemText
-              primary='Đăng xuất'
+              primary='Log Out'
               primaryTypographyProps={{ fontWeight: 500, color: '#F66868' }}
               sx={{ opacity: open ? 1 : 0 }}
             />

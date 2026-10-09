@@ -6,13 +6,13 @@ import { UserStatus } from '~/global/app-status'
 export const StaffColumns: MRT_ColumnDef<Staff>[] = [
   {
     accessorKey: 'staffCode',
-    header: 'Mã nhân viên',
+    header: 'Staff ID',
     size: 150,
     enableSorting: false
   },
   {
     accessorKey: 'name',
-    header: 'Tên nhân viên',
+    header: 'Staff Name',
     size: 250
   },
   {
@@ -22,7 +22,7 @@ export const StaffColumns: MRT_ColumnDef<Staff>[] = [
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 150,
     Cell: ({ cell }) => {
       const type = cell.getValue() as UserStatus
@@ -30,8 +30,8 @@ export const StaffColumns: MRT_ColumnDef<Staff>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Hoạt động', value: UserStatus.ACTIVE },
-      { label: 'Vô hiệu hóa', value: UserStatus.INACTIVE }
+      { label: 'Active', value: UserStatus.ACTIVE },
+      { label: 'Inactive', value: UserStatus.INACTIVE }
     ]
   }
 ]

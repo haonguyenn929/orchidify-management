@@ -28,9 +28,11 @@ const PendingPayoutRequestChart = () => {
     nextPage: null
   })
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: payoutRequests, error: apiError } = await getAllPayoutRequests(
         1,
         5,
@@ -55,6 +57,7 @@ const PendingPayoutRequestChart = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllPayoutRequests])
 
@@ -73,7 +76,7 @@ const PendingPayoutRequestChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Yêu cầu rút tiền đang chờ
+          Pending Payout Requests
         </Typography>
         <Typography
           variant='caption'
@@ -82,10 +85,10 @@ const PendingPayoutRequestChart = () => {
           to={protectedRoute.payoutRequestList.path}
           sx={{ textDecoration: 'none' }}
         >
-          Xem tất cả
+          View all
         </Typography>
       </Box>
-      <TableDisplay data={data.docs} />
+      <TableDisplay data={data.docs} isLoading={isLoading} />
     </Paper>
   )
 }
@@ -94,18 +97,19 @@ export default PendingPayoutRequestChart
 
 interface TableDisplayProps {
   data: PayoutRequestListItemDto[]
+  isLoading?: boolean
 }
 
-const TableDisplay = ({ data }: TableDisplayProps) => {
+const TableDisplay = ({ data, isLoading }: TableDisplayProps) => {
   const navigate = useNavigate()
   const payoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
     {
       accessorKey: 'createdBy.name',
-      header: 'Giảng viên'
+      header: 'Instructors'
     },
     {
       accessorKey: 'amount',
-      header: 'Số tiền',
+      header: 'Amount',
       size: 125,
       grow: false,
       Cell: ({ cell }) => {
@@ -115,7 +119,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
     },
     {
       accessorKey: 'createdAt',
-      header: 'Thời gian tạo',
+      header: 'Created at',
       grow: false,
       size: 120,
       muiTableBodyCellProps: {
@@ -129,10 +133,10 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
         return (
           <>
             <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-              {new Date(date).toLocaleTimeString('vi-VN')}
+              {new Date(date).toLocaleTimeString('en-US')}
             </Typography>
             <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-              {new Date(date).toLocaleDateString('vi-VN')}
+              {new Date(date).toLocaleDateString('en-US')}
             </Typography>
           </>
         )
@@ -142,6 +146,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
 
   return (
     <Table
+      isLoading={isLoading}
       tableOptions={{
         columns: payoutRequestColumns,
         data: data || [],

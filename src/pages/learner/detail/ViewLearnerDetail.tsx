@@ -84,21 +84,21 @@ const ViewLearnerDetail = () => {
       <TitleWrapper>
         <div>
           <Typography variant='h5' fontSize={34} fontWeight={700}>
-            Thông tin học viên
+            Learner Details
           </Typography>
           <Breadcrumbs items={breadcrumbsItems} />
         </div>
         <div style={{ display: 'flex' }}>
           {/* <Button color='warning' onClick={handleUpdateButton} sx={{ marginRight: '24px' }}>
-            Cập nhật
+            Update
           </Button> */}
           {data?.status === UserStatus.ACTIVE ? (
             <Button color='error' onClick={handleOpenDeactivateDialog}>
-              Vô hiệu hóa
+              Inactive
             </Button>
           ) : (
             <Button color='secondary' onClick={handleOpenActivateDialog}>
-              Kích hoạt
+              Activate
             </Button>
           )}
         </div>
@@ -119,7 +119,7 @@ const ViewLearnerDetail = () => {
               {data?.name}
             </Typography>
             <Typography variant='h6' fontSize={14} fontWeight={500} color={theme.label.secondary}>
-              Học viên
+              Learners
             </Typography>
           </div>
         </Avatar>
@@ -127,29 +127,29 @@ const ViewLearnerDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin cá nhân
+            Personal Information
           </Typography>
           <Line theme={theme} />
         </div>
         <Box>
-          <Field label='Tên học viên' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
+          <Field label='Learner Name' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
           <Field
-            label='Ngày sinh'
+            label='Date of birth'
             content={
               <ContentText>
-                {data.dateOfBirth ? new Date(data.dateOfBirth).toLocaleDateString('vi-VN') : 'Chưa cập nhật'}
+                {data.dateOfBirth ? new Date(data.dateOfBirth).toLocaleDateString('en-US') : 'Not updated'}
               </ContentText>
             }
             theme={theme}
           />
           <Field label='Email' content={<ContentText>{data?.email || ''}</ContentText>} theme={theme} />
           <Field
-            label='Số điện thoại'
-            content={<ContentText>{data?.phone || 'Chưa cập nhật'}</ContentText>}
+            label='Phone number'
+            content={<ContentText>{data?.phone || 'Not updated'}</ContentText>}
             theme={theme}
           />
           <Field
-            label='Trạng thái'
+            label='Status'
             content={data ? <UserStatusTag type={UserStatus[data.status]} /> : null}
             theme={theme}
           />

@@ -26,7 +26,7 @@ const ApproveCancelledClassRequestDialog = ({
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Chấp nhận yêu cầu'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Approve Request'))
       onSuccess()
     }
     handleClose()
@@ -45,11 +45,11 @@ const ApproveCancelledClassRequestDialog = ({
       handleCancel={handleCancel}
       handleConfirm={handleApprove}
       isProcessing={isProcessing}
-      title='Xác nhận chấp nhận yêu cầu'
-      description={APP_MESSAGE.CONFIRM_ACTION('chấp nhận yêu cầu này')}
-      confirmButtonText='Đồng ý'
+      title='Confirm Approve Request'
+      description={APP_MESSAGE.CONFIRM_ACTION('approve this request')}
+      confirmButtonText='Agree'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { maxWidth: '900px', width: '100%' } }}
     />
   )

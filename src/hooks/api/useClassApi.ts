@@ -49,7 +49,7 @@ export const useClassApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách lớp học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -68,7 +68,7 @@ export const useClassApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin lớp học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -87,7 +87,7 @@ export const useClassApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('chi tiết buổi học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('session details') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -106,7 +106,7 @@ export const useClassApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin dụng cụ lớp học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class toolkit information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -125,7 +125,7 @@ export const useClassApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Kết thúc khóa học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('End Course') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -144,7 +144,7 @@ export const useClassApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Hủy lớp học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Cancel Class') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

@@ -37,9 +37,11 @@ const FeedbackTable = ({ courseId }: FeedbackTableProps) => {
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [openFeedbackDetailDialog, setOpenFeedbackDetailDialog] = useState(false)
   const [selectedFeedback, setSelectedFeedback] = useState<FeedbackListItemResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: feedbacks, error: apiError } = await getCourseFeedbackList(
         courseId,
         pagination.pageIndex + 1,
@@ -65,6 +67,7 @@ const FeedbackTable = ({ courseId }: FeedbackTableProps) => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getCourseFeedbackList, pagination.pageIndex, pagination.pageSize, sorting, columnFilters, courseId])
 
@@ -80,7 +83,8 @@ const FeedbackTable = ({ courseId }: FeedbackTableProps) => {
   return (
     <>
       <Table
-        title='Đánh giá'
+        title='Feedback'
+        isLoading={isLoading}
         tableOptions={{
           columns: feedbackColumns,
           data: data.docs || [],

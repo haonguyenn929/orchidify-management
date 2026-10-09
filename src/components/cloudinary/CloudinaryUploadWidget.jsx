@@ -39,7 +39,7 @@ const CloudinaryUploadWidget = ({
                     clientAllowedFormats.join(', '),
                     maxFileSize.text
                   ),
-                  unavailable: 'Không có sẵn',
+                  unavailable: 'Not available',
                   max_number_of_files: APP_MESSAGE.INCORRECT_NUMBER_OF_FILES(minFile, maxFiles),
                   allowed_formats: APP_MESSAGE.INVALID_FILE_FORMAT_OR_SIZE(
                     clientAllowedFormats.join(', '),
@@ -88,7 +88,7 @@ const CloudinaryUploadWidget = ({
         widget.open()
       }}
     >
-      Tải lên
+      Upload
     </Button>
   )
 }

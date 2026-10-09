@@ -27,7 +27,7 @@ export const useNotificationApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_SUCCESS('đăng kí thiết bị nhận thông báo') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_SUCCESS('register device for notifications') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

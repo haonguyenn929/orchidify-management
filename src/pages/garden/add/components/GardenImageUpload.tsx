@@ -53,7 +53,7 @@ const GardenImageUpload = <TFieldValues extends FieldValues>({ controller }: Gar
     <>
       <ControlledFileAreaUpload
         controller={controller}
-        label='Hình ảnh nhà vườn'
+        label='Garden Images'
         clientAllowedFormats={[FileFormat.jpeg, FileFormat.jpg, FileFormat.png]}
         multiple
         minFile={1}

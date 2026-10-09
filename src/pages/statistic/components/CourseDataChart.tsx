@@ -64,7 +64,7 @@ const CourseDataChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Khóa học
+          Courses
         </Typography>
         <Select
           size='small'
@@ -97,7 +97,7 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
   const chartSeries: ApexCharts.ApexOptions['series'] = useMemo(() => {
     const course: number[] = []
 
-    const series: ApexCharts.ApexOptions['series'] = [{ name: 'Khóa học', color: '#F56767', data: course }]
+    const series: ApexCharts.ApexOptions['series'] = [{ name: 'Courses', color: '#F56767', data: course }]
 
     data.forEach((month) => {
       course.push(month.course.quantity)

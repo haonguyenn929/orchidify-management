@@ -29,7 +29,7 @@ const InstructorTimesheet = () => {
   const { getInstructorTimesheet } = useGardenTimesheetApi()
 
   if (!instructorId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin lịch giảng viên'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('instructor schedule information'))
     return <Navigate to={protectedRoute.instructorList.path} replace />
   }
 
@@ -50,7 +50,7 @@ const InstructorTimesheet = () => {
         const transformedEventData: CalendarEvent[] = instructorTimesheet.map<CalendarEvent>((slot) => ({
           start: slot.start,
           end: slot.end,
-          title: slot.metadata ? `${slot.metadata.code} - ${slot.metadata.title}` : 'Lớp học',
+          title: slot.metadata ? `${slot.metadata.code} - ${slot.metadata.title}` : 'Classes',
           display: 'block',
           backgroundColor: '#0ea5e919'
         }))

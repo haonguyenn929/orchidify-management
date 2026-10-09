@@ -39,7 +39,7 @@ const useGardenTimesheetApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin lịch nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('garden schedule information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -64,7 +64,7 @@ const useGardenTimesheetApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Cập nhật lịch nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Update Garden Schedule') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -89,7 +89,7 @@ const useGardenTimesheetApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin lịch giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('instructor schedule information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -114,7 +114,7 @@ const useGardenTimesheetApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách tiết học của nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('garden slot list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -139,7 +139,7 @@ const useGardenTimesheetApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('ngày nghỉ của nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('garden days off') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -158,7 +158,7 @@ const useGardenTimesheetApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin tiết học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('slot information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

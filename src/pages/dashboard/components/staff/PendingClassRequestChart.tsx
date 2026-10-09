@@ -28,9 +28,11 @@ const PendingClassRequestChart = () => {
     nextPage: null
   })
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: classRequests, error: apiError } = await getAllClassRequests(
         1,
         5,
@@ -55,6 +57,7 @@ const PendingClassRequestChart = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllClassRequests])
 
@@ -73,7 +76,7 @@ const PendingClassRequestChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Yêu cầu lớp học đang chờ
+          Pending Class Requests
         </Typography>
         <Typography
           variant='caption'
@@ -82,10 +85,10 @@ const PendingClassRequestChart = () => {
           to={protectedRoute.classRequestList.path}
           sx={{ textDecoration: 'none' }}
         >
-          Xem tất cả
+          View all
         </Typography>
       </Box>
-      <TableDisplay data={data.docs} />
+      <TableDisplay data={data.docs} isLoading={isLoading} />
     </Paper>
   )
 }
@@ -94,14 +97,15 @@ export default PendingClassRequestChart
 
 interface TableDisplayProps {
   data: ClassRequestListItemResponseDto[]
+  isLoading?: boolean
 }
 
-const TableDisplay = ({ data }: TableDisplayProps) => {
+const TableDisplay = ({ data, isLoading }: TableDisplayProps) => {
   const navigate = useNavigate()
   const classRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>[] = [
     {
       accessorKey: 'type',
-      header: 'Loại yêu cầu',
+      header: 'Request Type',
       size: 115,
       grow: false,
       Cell: ({ row }) => {
@@ -111,7 +115,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
     },
     {
       accessorKey: 'createdBy.name',
-      header: 'Giảng viên',
+      header: 'Instructors',
       Cell: ({ cell }) => {
         return (
           <Typography
@@ -130,7 +134,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
     },
     {
       accessorKey: 'metadata.title',
-      header: 'Tên khóa học',
+      header: 'Course Name',
       Cell: ({ cell }) => {
         return (
           <Typography
@@ -149,7 +153,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
     },
     {
       accessorKey: 'createdAt',
-      header: 'Thời gian tạo',
+      header: 'Created at',
       grow: false,
       size: 120,
       muiTableBodyCellProps: {
@@ -163,10 +167,10 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
         return (
           <>
             <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-              {new Date(date).toLocaleTimeString('vi-VN')}
+              {new Date(date).toLocaleTimeString('en-US')}
             </Typography>
             <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-              {new Date(date).toLocaleDateString('vi-VN')}
+              {new Date(date).toLocaleDateString('en-US')}
             </Typography>
           </>
         )
@@ -176,6 +180,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
 
   return (
     <Table
+      isLoading={isLoading}
       tableOptions={{
         columns: classRequestColumns,
         data: data || [],

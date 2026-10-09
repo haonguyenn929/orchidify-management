@@ -13,10 +13,12 @@ interface InactiveGardenTimesheetTableProps {
 const InactiveGardenTimesheetTable = ({ gardenId }: InactiveGardenTimesheetTableProps) => {
   const { getInactiveGardenTimesheet } = useGardenTimesheetApi()
   const [data, setData] = useState<GardenTimesheetItemResponseDto[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
     ;(async () => {
       if (!gardenId) return
+      setIsLoading(true)
       const { data, error } = await getInactiveGardenTimesheet(gardenId, dayjs().format('YYYY-MM-DD'))
       if (data) {
         setData(data)
@@ -24,12 +26,14 @@ const InactiveGardenTimesheetTable = ({ gardenId }: InactiveGardenTimesheetTable
       if (error) {
         console.error(error)
       }
+      setIsLoading(false)
     })()
   }, [gardenId, getInactiveGardenTimesheet])
 
   return (
     <Table
-      title='Danh sách ngày nghỉ'
+      title='Days Off List'
+      isLoading={isLoading}
       tableOptions={{
         columns: gardenTimesheetColumns,
         data: data || [],
@@ -39,7 +43,7 @@ const InactiveGardenTimesheetTable = ({ gardenId }: InactiveGardenTimesheetTable
             variant='body1'
             sx={{ color: 'rgba(0, 0, 0, 0.6)', fontStyle: 'italic', py: '2rem', textAlign: 'center', width: '100%' }}
           >
-            Không có dữ liệu
+            No data
           </Typography>
         ),
         enableSorting: false,
@@ -70,7 +74,7 @@ export default InactiveGardenTimesheetTable
 const gardenTimesheetColumns: MRT_ColumnDef<GardenTimesheetItemResponseDto>[] = [
   {
     accessorKey: 'start',
-    header: 'Ngày nghỉ',
+    header: 'Day Off',
     grow: true,
     Cell: ({ cell }) => {
       const value = cell.getValue() as string

@@ -6,7 +6,7 @@ import { UserStatus } from '~/global/app-status'
 export const GardenManagerColumns: MRT_ColumnDef<GardenManager>[] = [
   {
     accessorKey: 'name',
-    header: 'Tên quản lý vườn',
+    header: 'Garden Manager Name',
     size: 250
   },
   {
@@ -16,17 +16,17 @@ export const GardenManagerColumns: MRT_ColumnDef<GardenManager>[] = [
   },
   {
     accessorKey: 'createdAt',
-    header: 'Ngày tạo',
+    header: 'Created date',
     size: 200,
     Cell: ({ cell }) => {
       const date = new Date(cell.getValue() as unknown as string)
-      return date.toLocaleDateString('vi-VN')
+      return date.toLocaleDateString('en-US')
     },
     enableColumnFilter: false
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 150,
     Cell: ({ cell }) => {
       const type = cell.getValue() as UserStatus
@@ -34,8 +34,8 @@ export const GardenManagerColumns: MRT_ColumnDef<GardenManager>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Hoạt động', value: UserStatus.ACTIVE },
-      { label: 'Vô hiệu hóa', value: UserStatus.INACTIVE }
+      { label: 'Active', value: UserStatus.ACTIVE },
+      { label: 'Inactive', value: UserStatus.INACTIVE }
     ]
   }
 ]

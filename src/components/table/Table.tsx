@@ -1,9 +1,8 @@
 import { Typography, useTheme } from '@mui/material'
 import { MaterialReactTable, MRT_RowData, MRT_TableOptions, useMaterialReactTable } from 'material-react-table'
-import { MRT_Localization_VI } from 'material-react-table/locales/vi'
-
 interface TableProps<TData extends MRT_RowData> {
   title?: string
+  isLoading?: boolean
   tableOptions: Omit<
     MRT_TableOptions<TData>,
     | 'enableDensityToggle'
@@ -14,7 +13,7 @@ interface TableProps<TData extends MRT_RowData> {
   >
 }
 
-const Table = <TData extends MRT_RowData>({ title, tableOptions }: TableProps<TData>) => {
+const Table = <TData extends MRT_RowData>({ title, isLoading, tableOptions }: TableProps<TData>) => {
   const theme = useTheme()
 
   const table = useMaterialReactTable({
@@ -25,7 +24,9 @@ const Table = <TData extends MRT_RowData>({ title, tableOptions }: TableProps<TD
     enableGlobalFilter: false,
     enableFilterMatchHighlighting: false,
     enableColumnActions: false,
-    localization: MRT_Localization_VI,
+    localization: {
+      noRecordsToDisplay: 'No data'
+    },
     muiTablePaperProps: {
       style: {
         marginTop: '1.5rem'
@@ -38,7 +39,11 @@ const Table = <TData extends MRT_RowData>({ title, tableOptions }: TableProps<TD
           </Typography>
         )
       : undefined,
-    ...tableOptions
+    ...tableOptions,
+    state: {
+      ...tableOptions.state,
+      isLoading: isLoading ?? tableOptions.state?.isLoading ?? false
+    }
   })
 
   return <MaterialReactTable table={table} />

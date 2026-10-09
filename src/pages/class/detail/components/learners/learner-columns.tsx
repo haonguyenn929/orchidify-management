@@ -7,7 +7,7 @@ import { SyntheticEvent } from 'react'
 export const learnerColumns: MRT_ColumnDef<ClassLearnerDto>[] = [
   {
     accessorKey: 'name',
-    header: 'Tên học viên',
+    header: 'Learner Name',
     Cell: ({ row }) => {
       const { name, avatar } = row.original
       return (

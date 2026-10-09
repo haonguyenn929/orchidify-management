@@ -65,7 +65,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('garden list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -84,7 +84,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('garden information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -102,7 +102,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('thêm nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('add garden') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -121,7 +121,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('cập nhật thông tin nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('update garden information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -140,7 +140,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Kích hoạt nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Activate Garden') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -159,7 +159,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Vô hiệu hóa nhà vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Deactivate Garden') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -178,7 +178,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('cập nhật quản lý vườn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('update garden manager') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -215,7 +215,7 @@ export const useGardenApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('vườn có thể chọn') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('selectable gardens') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

@@ -4,18 +4,18 @@ import { CourseComboListItemResponseDto } from '~/data/courseCombo.dto'
 export const CourseComboColumns: MRT_ColumnDef<CourseComboListItemResponseDto>[] = [
   {
     accessorKey: 'title',
-    header: 'Combo khóa học'
+    header: 'Course Combos'
   },
   {
     accessorKey: 'instructor.name',
-    size: 250,
+    size: 160,
     grow: false,
-    header: 'Giảng viên',
+    header: 'Instructors',
     enableColumnFilter: false
   },
   {
     accessorKey: 'discount',
-    header: 'Giảm giá',
+    header: 'Discount',
     size: 150,
     grow: false,
     muiTableHeadCellProps: {
@@ -31,7 +31,7 @@ export const CourseComboColumns: MRT_ColumnDef<CourseComboListItemResponseDto>[]
   },
   {
     accessorKey: 'childCourseIds.length',
-    header: 'Số khóa trong combo',
+    header: 'Courses in Combo',
     size: 180,
     grow: false,
     muiTableHeadCellProps: {

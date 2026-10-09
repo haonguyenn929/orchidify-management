@@ -29,6 +29,7 @@ const NotificationDialog = memo(({ popupState }: NotificationDialogProps) => {
   const [notifications, setNotifications] = useState<NotificationDto[]>([])
 
   const loadNotification = useCallback(() => {
+    if (!db) return
     const notificationQuery = query(
       collection(db, 'notification'),
       where('receiverIds', 'array-contains', userTokenPayload?.sub),
@@ -74,13 +75,13 @@ const NotificationDialog = memo(({ popupState }: NotificationDialogProps) => {
     const diffMonths = dayjs().diff(date, 'month')
     const diffYears = dayjs().diff(date, 'year')
 
-    if (diffMins < 1) return 'vừa xong'
-    if (diffMins < 60) return `${diffMins} phút trước`
-    if (diffHours < 24) return `${diffHours} giờ trước`
-    if (diffDays < 7) return `${diffDays} ngày trước`
-    if (diffWeeks < 4) return `${diffWeeks} tuần trước`
-    if (diffMonths < 12) return `${diffMonths} tháng trước`
-    return `${diffYears} năm trước`
+    if (diffMins < 1) return 'just now'
+    if (diffMins < 60) return `${diffMins} minutes ago`
+    if (diffHours < 24) return `${diffHours} hours ago`
+    if (diffDays < 7) return `${diffDays} days ago`
+    if (diffWeeks < 4) return `${diffWeeks} weeks ago`
+    if (diffMonths < 12) return `${diffMonths} months ago`
+    return `${diffYears} years ago`
   }
 
   return (
@@ -102,14 +103,14 @@ const NotificationDialog = memo(({ popupState }: NotificationDialogProps) => {
           fontWeight: 500
         }}
       >
-        Thông báo
+        Notifications
       </Typography>
       <Divider />
       <Paper sx={{ width: 350, height: 650, overflow: 'auto' }}>
         {notifications.length > 0 ? (
           <List disablePadding>
             {groupedNotifications.today.length > 0 && (
-              <ListSubheader sx={{ fontSize: 16, color: '#000', lineHeight: 2.25 }}>Hôm nay</ListSubheader>
+              <ListSubheader sx={{ fontSize: 16, color: '#000', lineHeight: 2.25 }}>Today</ListSubheader>
             )}
             {groupedNotifications.today.map((notification) => (
               <ListItem key={notification.id} disableGutters disablePadding>
@@ -133,7 +134,7 @@ const NotificationDialog = memo(({ popupState }: NotificationDialogProps) => {
             ))}
 
             {groupedNotifications.earlier.length > 0 && (
-              <ListSubheader sx={{ fontSize: 16, color: '#000', lineHeight: 2.25 }}>Trước đó</ListSubheader>
+              <ListSubheader sx={{ fontSize: 16, color: '#000', lineHeight: 2.25 }}>Earlier</ListSubheader>
             )}
             {groupedNotifications.earlier.map((notification) => (
               <ListItem key={notification.id} disableGutters disablePadding>
@@ -167,7 +168,7 @@ const NotificationDialog = memo(({ popupState }: NotificationDialogProps) => {
               fontStyle: 'italic'
             }}
           >
-            Không có thông báo mới
+            No new notifications
           </Typography>
         )}
       </Paper>

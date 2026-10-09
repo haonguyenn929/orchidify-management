@@ -17,7 +17,7 @@ const defaultFormValues: FormValues = {
 }
 
 const validationSchema = z.object({
-  gardenId: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Nhà vườn'))
+  gardenId: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Gardens'))
 })
 
 interface ApprovePublishedRequestDialogProps {
@@ -50,7 +50,7 @@ const ApprovePublishedClassRequestDialog = ({
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Chấp nhận yêu cầu'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Approve Request'))
       onSuccess()
     }
     handleClose()
@@ -66,17 +66,17 @@ const ApprovePublishedClassRequestDialog = ({
       onSubmit={handleSubmit(handleApprove)}
       handleCancel={handleCancel}
       isProcessing={isSubmitting}
-      title='Xác nhận chấp nhận yêu cầu'
-      description={APP_MESSAGE.CONFIRM_ACTION('chấp nhận yêu cầu này')}
-      confirmButtonText='Đồng ý'
+      title='Confirm Approve Request'
+      description={APP_MESSAGE.CONFIRM_ACTION('approve this request')}
+      confirmButtonText='Agree'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       formContent={
         <ControlledSelect
           controller={{ name: 'gardenId', control: control }}
-          label='Nhà vườn'
+          label='Gardens'
           labelId='garden-select-label'
-          placeholder={gardenOptions.length > 0 ? 'Chọn nhà vườn' : 'Không có nhà vườn nào'}
+          placeholder={gardenOptions.length > 0 ? 'Select Garden' : 'No gardens available'}
           disabled={gardenOptions.length === 0}
           items={gardenOptions.map((option) => ({ value: option._id, name: option.name }))}
           fullWidth

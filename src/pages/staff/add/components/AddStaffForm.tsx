@@ -28,14 +28,14 @@ const defaultFormValues: FormValues = {
 const validationSchema = z.object({
   name: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Tên nhân viên'))
-    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Tên nhân viên', 50)),
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Staff Name'))
+    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Staff Name', 50)),
   email: z
     .string()
     .min(1, APP_MESSAGE.REQUIRED_FIELD('Email'))
     .max(50, APP_MESSAGE.FIELD_TOO_LONG('Email', 50))
     .email(APP_MESSAGE.WRONG_EMAIL_FORMAT),
-  idCardPhoto: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Ảnh thẻ'))
+  idCardPhoto: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('ID Photo'))
 })
 
 const AddStaffForm = () => {
@@ -57,7 +57,7 @@ const AddStaffForm = () => {
       notifyError(error.message)
       return
     }
-    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Thêm nhân viên'))
+    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Add Staff'))
     navigate(protectedRoute.staffList.path, { replace: true })
   })
 
@@ -66,7 +66,7 @@ const AddStaffForm = () => {
       <Paper sx={{ width: '100%', marginY: '40px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin nhân viên
+            Staff Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -74,7 +74,7 @@ const AddStaffForm = () => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
-              label='Tên nhân viên'
+              label='Staff Name'
               fullWidth
               size='small'
             />
@@ -90,7 +90,7 @@ const AddStaffForm = () => {
           <Grid item xs={12} lg={6}>
             <ControlledFileFieldUpload
               controller={{ name: 'idCardPhoto', control: control }}
-              label='Ảnh thẻ'
+              label='ID Photo'
               clientAllowedFormats={[FileFormat.jpeg, FileFormat.jpg, FileFormat.png]}
               minFile={1}
               maxFileSize={FileSize['5MB']}
@@ -99,7 +99,7 @@ const AddStaffForm = () => {
         </Grid>
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Thêm
+        Add
       </Button>
     </StyledForm>
   )

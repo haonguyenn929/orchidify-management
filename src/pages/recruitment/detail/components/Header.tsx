@@ -34,10 +34,10 @@ const Header = ({
       return (
         <>
           <Button color='secondary' onClick={onApproveButtonClick}>
-            Chấp nhận
+            Accepted
           </Button>
           <Button color='error' onClick={onRejectButtonClick}>
-            Từ chối
+            Rejected
           </Button>
         </>
       )
@@ -46,10 +46,10 @@ const Header = ({
       return (
         <>
           <Button color='secondary' onClick={onProcessButtonClick}>
-            Xử lý
+            Process
           </Button>
           <Button color='error' onClick={onRejectButtonClick}>
-            Từ chối
+            Rejected
           </Button>
         </>
       )
@@ -58,10 +58,10 @@ const Header = ({
       return (
         <Box display='flex' alignItems='center'>
           <Typography variant='subtitle1' fontStyle='italic' height='fit-content' marginRight='0.5rem'>
-            Đã thêm giảng viên
+            Instructor added
           </Typography>
           <Button color='secondary' onClick={onAddButtonClick} endIcon={<AddIcon />} disabled={isInstructorAdded}>
-            Thêm
+            Add
           </Button>
         </Box>
       )
@@ -70,7 +70,7 @@ const Header = ({
 
   return (
     <Box display='flex' justifyContent='space-between' alignItems='center'>
-      <PageHeader title='Chi tiết đơn tuyển' breadcrumbsItems={breadcrumbsItems} />
+      <PageHeader title='Recruitment Details' breadcrumbsItems={breadcrumbsItems} />
       <Box display='flex' justifyContent='space-between' gap='1.5rem'>
         {renderButtons()}
       </Box>

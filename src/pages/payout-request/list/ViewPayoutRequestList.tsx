@@ -35,10 +35,12 @@ const ViewPayoutRequestList = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: payoutRequest, error: apiError } = await getAllPayoutRequests(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -63,6 +65,7 @@ const ViewPayoutRequestList = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllPayoutRequests, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -74,11 +77,12 @@ const ViewPayoutRequestList = () => {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Yêu cầu rút tiền
+          Payout Requests
         </Typography>
       </TitleWrapper>
       <Table
-        title='Danh sách các yêu cầu'
+        title='Request List'
+        isLoading={isLoading}
         tableOptions={{
           columns: PayoutRequestColumns,
           data: data.docs || [],

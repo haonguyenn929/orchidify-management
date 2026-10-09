@@ -24,9 +24,9 @@ type FormValues = {
 const validationSchema = z.object({
   description: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Mô tả'))
-    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Mô tả', 500)),
-  images: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Hình ảnh nhà vườn'))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Description'))
+    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Description', 500)),
+  images: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Garden Images'))
 })
 
 interface UpdateGardenInfoFormProps {
@@ -59,7 +59,7 @@ const UpdateGardenInfoForm = ({ garden }: UpdateGardenInfoFormProps) => {
       notifyError(error.message)
       return
     }
-    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật thông tin nhà vườn'))
+    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Garden Info'))
     navigate(protectedRoute.gardenDetail.path.replace(':id', garden._id), { replace: true })
   })
 
@@ -68,7 +68,7 @@ const UpdateGardenInfoForm = ({ garden }: UpdateGardenInfoFormProps) => {
       <Paper sx={{ width: '100%', marginY: '20px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin nhà vườn
+            Garden Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -77,7 +77,7 @@ const UpdateGardenInfoForm = ({ garden }: UpdateGardenInfoFormProps) => {
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
               disabled
-              label='Tên nhà vườn'
+              label='Garden Name'
               fullWidth
               size='small'
             />
@@ -86,7 +86,7 @@ const UpdateGardenInfoForm = ({ garden }: UpdateGardenInfoFormProps) => {
             <ControlledOutlinedInput
               controller={{ name: 'address', control: control }}
               disabled
-              label='Địa chỉ'
+              label='Address'
               fullWidth
               size='small'
             />
@@ -97,7 +97,7 @@ const UpdateGardenInfoForm = ({ garden }: UpdateGardenInfoFormProps) => {
               multiline
               minRows={5}
               maxRows={5}
-              label='Mô tả'
+              label='Description'
               fullWidth
             />
           </Grid>
@@ -107,7 +107,7 @@ const UpdateGardenInfoForm = ({ garden }: UpdateGardenInfoFormProps) => {
         </Grid>
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Lưu
+        Save
       </Button>
     </StyledForm>
   )

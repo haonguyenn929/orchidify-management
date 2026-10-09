@@ -22,7 +22,7 @@ const SessionListItem = ({ session, open, onClick }: SessionListItemProps) => {
         <ListItemText
           primary={
             <Typography variant='body1' fontWeight={600}>
-              Buổi học #{session.sessionNumber}: {session.title}
+              Session #{session.sessionNumber}: {session.title}
             </Typography>
           }
         />
@@ -31,7 +31,7 @@ const SessionListItem = ({ session, open, onClick }: SessionListItemProps) => {
       <Collapse in={open} timeout='auto' unmountOnExit sx={{ width: '100%', padding: '0.5rem 1rem' }}>
         {/* <Box display='flex' alignItems='center' marginBottom='1.25rem'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-            Nội dung buổi học
+            Session Content
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box> */}
@@ -39,13 +39,13 @@ const SessionListItem = ({ session, open, onClick }: SessionListItemProps) => {
           {/* <Box display='flex' gap='1rem' marginBottom='1.25rem'>
             <Box display='flex' flexDirection='column' justifyContent='space-between' flexGrow='1'>
               <Typography variant='subtitle1' fontWeight={600}>
-                Buổi học #{session.sessionNumber}: {session.title}
+                Session #{session.sessionNumber}: {session.title}
               </Typography>
             </Box>
           </Box> */}
           <Box marginBottom='1.25rem'>
             <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-              Mô tả
+              Description
             </Typography>
             <Typography variant='subtitle1' fontWeight={400}>
               {session.description}
@@ -55,7 +55,7 @@ const SessionListItem = ({ session, open, onClick }: SessionListItemProps) => {
             {videos.length > 0 && (
               <Box display='flex' flexDirection='column' gap='0.5rem' width='50%'>
                 <Typography variant='subtitle1' fontWeight={600}>
-                  Video bài học
+                  Session Video
                 </Typography>
                 {videos.map((value) => (
                   <video
@@ -79,7 +79,7 @@ const SessionListItem = ({ session, open, onClick }: SessionListItemProps) => {
               }}
             >
               <Typography variant='subtitle1' fontWeight={600}>
-                Tài nguyên bài học
+                Session Resources
               </Typography>
               <Carousel
                 {...(videos.length > 0 && {

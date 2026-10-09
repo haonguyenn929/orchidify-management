@@ -35,10 +35,12 @@ const ViewInstructorList = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: instructor, error: apiError } = await getAllInstructors(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -63,6 +65,7 @@ const ViewInstructorList = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllInstructors, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -74,11 +77,12 @@ const ViewInstructorList = () => {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Giảng viên
+          Instructors
         </Typography>
       </TitleWrapper>
       <Table
-        title='Danh sách giảng viên'
+        title='Instructor List'
+        isLoading={isLoading}
         tableOptions={{
           columns: InstructorColumns,
           data: data.docs || [],

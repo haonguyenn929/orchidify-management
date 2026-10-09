@@ -1,5 +1,6 @@
 import { Chip, SxProps, Theme } from '@mui/material'
 import { CourseStatus } from '~/global/app-status'
+import { baseTagStyles } from './tag.styles'
 
 interface CourseStatusTagProps {
   type: CourseStatus
@@ -11,7 +12,7 @@ const CourseStatusTag = ({ type }: CourseStatusTagProps) => {
 
   switch (type) {
     case CourseStatus.DRAFT: {
-      label = 'Bản nháp'
+      label = 'Draft'
       styles = {
         backgroundColor: '#0000000a',
         '& .MuiChip-label': { color: '#0000007a' }
@@ -19,7 +20,7 @@ const CourseStatusTag = ({ type }: CourseStatusTagProps) => {
       break
     }
     case CourseStatus.REQUESTING: {
-      label = 'Chờ duyệt'
+      label = 'Pending'
       styles = {
         backgroundColor: '#d4f7ff',
         '& .MuiChip-label': { color: '#5badd0' }
@@ -27,7 +28,7 @@ const CourseStatusTag = ({ type }: CourseStatusTagProps) => {
       break
     }
     case CourseStatus.ACTIVE: {
-      label = 'Đã công khai'
+      label = 'Published'
       styles = {
         display: 'none'
       }
@@ -35,7 +36,13 @@ const CourseStatusTag = ({ type }: CourseStatusTagProps) => {
     }
   }
 
-  return <Chip label={label} variant='filled' sx={styles} />
+  return (
+    <Chip
+      label={label}
+      variant='filled'
+      sx={[baseTagStyles, ...(Array.isArray(styles) ? styles : [styles])]}
+    />
+  )
 }
 
 export default CourseStatusTag

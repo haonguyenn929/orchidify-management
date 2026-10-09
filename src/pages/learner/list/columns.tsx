@@ -6,7 +6,7 @@ import { UserStatus } from '~/global/app-status'
 export const LearnerColumns: MRT_ColumnDef<Learner>[] = [
   {
     accessorKey: 'name',
-    header: 'Tên học viên',
+    header: 'Learner Name',
     size: 200
   },
   {
@@ -16,29 +16,29 @@ export const LearnerColumns: MRT_ColumnDef<Learner>[] = [
   },
   {
     accessorKey: 'phone',
-    header: 'Số điện thoại',
+    header: 'Phone number',
     size: 100,
     enableColumnFilter: false,
     Cell: ({ cell }) => {
-      return (cell.getValue() as string) || 'Chưa cập nhật'
+      return (cell.getValue() as string) || 'Not updated'
     }
   },
   {
     accessorKey: 'dateOfBirth',
-    header: 'Ngày sinh',
+    header: 'Date of birth',
     enableColumnFilter: false,
     size: 100,
     Cell: ({ cell }) => {
       return (
         <>
-          {cell.getValue() ? new Date(cell.getValue() as string | number).toLocaleDateString('vi-VN') : 'Chưa cập nhật'}
+          {cell.getValue() ? new Date(cell.getValue() as string | number).toLocaleDateString('en-US') : 'Not updated'}
         </>
       )
     }
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 150,
     Cell: ({ cell }) => {
       const type = cell.getValue() as UserStatus
@@ -46,8 +46,8 @@ export const LearnerColumns: MRT_ColumnDef<Learner>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Hoạt động', value: UserStatus.ACTIVE },
-      { label: 'Vô hiệu hóa', value: UserStatus.INACTIVE }
+      { label: 'Active', value: UserStatus.ACTIVE },
+      { label: 'Inactive', value: UserStatus.INACTIVE }
     ]
   }
 ]

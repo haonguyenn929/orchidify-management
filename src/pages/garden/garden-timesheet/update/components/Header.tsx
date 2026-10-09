@@ -16,7 +16,7 @@ const Header = ({ gardenId }: HeaderProps) => {
     protectedRoute.updateGardenTimesheet
   ]
 
-  return <PageHeader title='Cập nhật lịch' breadcrumbsItems={breadcrumbsItems} />
+  return <PageHeader title='Update Schedule' breadcrumbsItems={breadcrumbsItems} />
 }
 
 export default Header

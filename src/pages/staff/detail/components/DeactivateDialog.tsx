@@ -22,7 +22,7 @@ const DeactivateDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Vô hiệu hóa nhân viên'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Deactivate Staff'))
       onSuccess()
     }
     handleClose()
@@ -40,11 +40,11 @@ const DeactivateDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
       handleConfirm={() => staffId && handleDeactivate(staffId)}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận vô hiệu hóa'
-      description={APP_MESSAGE.CONFIRM_ACTION('vô hiệu hóa tài khoản này')}
-      confirmButtonText='Vô hiệu hóa'
+      title='Confirm Deactivation'
+      description={APP_MESSAGE.CONFIRM_ACTION('deactivate this account')}
+      confirmButtonText='Inactive'
       confirmButtonColor='error'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

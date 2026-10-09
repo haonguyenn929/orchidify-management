@@ -85,21 +85,21 @@ const ViewStaffDetail = () => {
       <TitleWrapper>
         <div>
           <Typography variant='h5' fontSize={34} fontWeight={700}>
-            Thông tin nhân viên
+            Staff Details
           </Typography>
           <Breadcrumbs items={breadcrumbsItems} />
         </div>
         <div style={{ display: 'flex' }}>
           <Button color='warning' onClick={handleUpdateButton} sx={{ marginRight: '24px' }}>
-            Cập nhật
+            Update
           </Button>
           {data?.status === UserStatus.ACTIVE ? (
             <Button color='error' onClick={handleOpenDeactivateDialog}>
-              Vô hiệu hóa
+              Inactive
             </Button>
           ) : (
             <Button color='secondary' onClick={handleOpenActivateDialog}>
-              Kích hoạt
+              Activate
             </Button>
           )}
         </div>
@@ -107,7 +107,7 @@ const ViewStaffDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin hệ thống
+            System Information
           </Typography>
 
           <Line theme={theme} />
@@ -119,7 +119,7 @@ const ViewStaffDetail = () => {
               {data?.name}
             </Typography>
             <Typography variant='h6' fontSize={14} fontWeight={500} color={theme.label.secondary}>
-              Nhân viên
+              Staff
             </Typography>
           </div>
         </Avatar>
@@ -127,16 +127,16 @@ const ViewStaffDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin cá nhân
+            Personal Information
           </Typography>
           <Line theme={theme} />
         </div>
         <Box>
-          <Field label='Mã nhân viên' content={<ContentText>{data?.staffCode || ''}</ContentText>} theme={theme} />
-          <Field label='Tên nhân viên' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
+          <Field label='Staff ID' content={<ContentText>{data?.staffCode || ''}</ContentText>} theme={theme} />
+          <Field label='Staff Name' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
           <Field label='Email' content={<ContentText>{data?.email || ''}</ContentText>} theme={theme} />
           <Field
-            label='Trạng thái'
+            label='Status'
             content={data ? <UserStatusTag type={UserStatus[data.status]} /> : null}
             theme={theme}
           />

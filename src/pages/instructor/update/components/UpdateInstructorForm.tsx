@@ -17,10 +17,10 @@ type FormValues = {
 const validationSchema = z.object({
   name: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Tên giảng viên'))
-    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Tên giảng viên', 50)),
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Instructor Name'))
+    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Instructor Name', 50)),
   phone: z.string().regex(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g, APP_MESSAGE.WRONG_PHONE_FORMAT),
-  dateOfBirth: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Ngày sinh'))
+  dateOfBirth: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Date of birth'))
 })
 
 interface UpdateInstructorFormProps {
@@ -48,7 +48,7 @@ const UpdateInstructorForm = ({ instructor, onSubmit }: UpdateInstructorFormProp
       <Paper sx={{ width: '100%', marginY: '40px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin giảng viên
+            Instructor Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -56,7 +56,7 @@ const UpdateInstructorForm = ({ instructor, onSubmit }: UpdateInstructorFormProp
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
-              label='Tên giảng viên'
+              label='Instructor Name'
               fullWidth
               size='small'
             />
@@ -64,7 +64,7 @@ const UpdateInstructorForm = ({ instructor, onSubmit }: UpdateInstructorFormProp
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'dateOfBirth', control: control }}
-              label='Ngày sinh'
+              label='Date of birth'
               type='date'
               fullWidth
               size='small'
@@ -76,7 +76,7 @@ const UpdateInstructorForm = ({ instructor, onSubmit }: UpdateInstructorFormProp
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'phone', control: control }}
-              label='Số điện thoại'
+              label='Phone number'
               fullWidth
               size='small'
             />
@@ -84,7 +84,7 @@ const UpdateInstructorForm = ({ instructor, onSubmit }: UpdateInstructorFormProp
         </Grid>
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Lưu
+        Save
       </Button>
     </StyledForm>
   )

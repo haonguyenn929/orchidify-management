@@ -36,7 +36,7 @@ const ProcessDialog = ({ recruitmentId, updatedAt, open, handleClose, onSuccess 
       z.object({
         meetingDate: z
           .string()
-          .min(1, APP_MESSAGE.REQUIRED_FIELD('Ngày diễn ra'))
+          .min(1, APP_MESSAGE.REQUIRED_FIELD('Occur date'))
           .refine((value) => dayjs().add(5, 'minutes').set('seconds', 0).isSameOrBefore(dayjs(value), 'seconds'), {
             message: APP_MESSAGE.VALUE_OUT_OF_RANGE(
               dayjs().add(5, 'minutes').format('DD/MM/YYYY, HH:mm'),
@@ -52,7 +52,7 @@ const ProcessDialog = ({ recruitmentId, updatedAt, open, handleClose, onSuccess 
               )
             }
           ),
-        meetingUrl: z.string().url('Đường dẫn không hợp lệ').min(1, APP_MESSAGE.REQUIRED_FIELD('Đường dẫn'))
+        meetingUrl: z.string().url('Invalid URL').min(1, APP_MESSAGE.REQUIRED_FIELD('URL'))
       }),
     [updatedAt]
   )
@@ -73,7 +73,7 @@ const ProcessDialog = ({ recruitmentId, updatedAt, open, handleClose, onSuccess 
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Chấp nhận yêu cầu'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Approve Request'))
       onSuccess()
     }
     handleClose()
@@ -89,16 +89,16 @@ const ProcessDialog = ({ recruitmentId, updatedAt, open, handleClose, onSuccess 
       onSubmit={handleSubmit(handleApprove)}
       handleCancel={handleCancel}
       isProcessing={isSubmitting}
-      title='Xác nhận xử lý đơn đuyển'
-      description={'Vui lòng nhập thời gian diễn ra và đường dẫn URL cuộc họp cho ứng viên'}
-      confirmButtonText='Xử lý'
+      title='Confirm Process Recruitment'
+      description={'Please enter the meeting time and URL for the applicant'}
+      confirmButtonText='Process'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       formContent={
         <>
           <ControlledOutlinedInput
             controller={{ name: 'meetingDate', control: control }}
-            label='Thời gian diễn ra'
+            label='Occur time'
             type='datetime-local'
             fullWidth
             size='small'
@@ -109,7 +109,7 @@ const ProcessDialog = ({ recruitmentId, updatedAt, open, handleClose, onSuccess 
           />
           <ControlledOutlinedInput
             controller={{ name: 'meetingUrl', control: control }}
-            label='Đường dẫn meeting'
+            label='Meeting URL'
             fullWidth
             size='small'
             sx={{ marginTop: '0.5rem' }}

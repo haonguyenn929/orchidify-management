@@ -12,7 +12,7 @@ const LearnerTable = ({ learners }: LearnerTableProps) => {
   const navigate = useNavigate()
   return (
     <Table
-      title='Danh sách học viên'
+      title='Learner List'
       tableOptions={{
         columns: learnerColumns,
         data: learners || [],

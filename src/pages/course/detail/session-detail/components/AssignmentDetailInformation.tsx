@@ -21,20 +21,20 @@ const AssignmentDetailInformation = ({ assignment }: { assignment: AssignmentDto
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Thông tin bài tập
+          Assignment Information
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
       <Box display='flex' gap='1rem' marginBottom='1.25rem'>
         <Box display='flex' flexDirection='column' justifyContent='space-between' flexGrow='1'>
           <Typography variant='subtitle1' fontWeight={600}>
-            Bài tập: {title}
+            Assignments: {title}
           </Typography>
         </Box>
       </Box>
       <Box marginBottom='1.25rem'>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Mô tả
+          Description
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {description}
@@ -42,7 +42,7 @@ const AssignmentDetailInformation = ({ assignment }: { assignment: AssignmentDto
       </Box>
       <Box>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Tài liệu
+          Documents
         </Typography>
         <Carousel>
           {attachments.map((value, index) => (

@@ -24,7 +24,7 @@ const ActivateDialog = ({ open, gardenId, date, handleClose, onSuccess }: Dialog
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật lịch nhà vườn'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Garden Schedule'))
       onSuccess()
     }
     handleClose()
@@ -41,11 +41,11 @@ const ActivateDialog = ({ open, gardenId, date, handleClose, onSuccess }: Dialog
       handleConfirm={() => handleActivate()}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận cập nhật lịch nhà vườn'
-      description={APP_MESSAGE.CONFIRM_ACTION('hoạt động ngày này')}
-      confirmButtonText='Xác nhận'
+      title='Confirm Garden Schedule Update'
+      description={APP_MESSAGE.CONFIRM_ACTION('active this day')}
+      confirmButtonText='Confirm'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

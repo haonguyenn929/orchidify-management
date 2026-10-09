@@ -10,20 +10,20 @@ const SessionDetailInformation = ({ session }: { session: SessionDto }) => {
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Thông tin bài học
+          Lesson Information
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
       <Box display='flex' gap='1rem' marginBottom='1.25rem'>
         <Box display='flex' flexDirection='column' justifyContent='space-between' flexGrow='1'>
           <Typography variant='subtitle1' fontWeight={600}>
-            Bài học #{sessionNumber}: {title}
+            Lesson #{sessionNumber}: {title}
           </Typography>
         </Box>
       </Box>
       <Box marginBottom='1.25rem'>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Mô tả
+          Description
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {description}
@@ -33,7 +33,7 @@ const SessionDetailInformation = ({ session }: { session: SessionDto }) => {
         {media.some((value) => value.resource_type === 'video') && (
           <Box display='flex' flexDirection='column' gap='0.5rem' width='50%'>
             <Typography variant='subtitle1' fontWeight={600}>
-              Video bài học
+              Session Video
             </Typography>
             {media
               .filter((value) => value.resource_type === 'video')
@@ -59,7 +59,7 @@ const SessionDetailInformation = ({ session }: { session: SessionDto }) => {
           }}
         >
           <Typography variant='subtitle1' fontWeight={600}>
-            Tài nguyên bài học
+            Session Resources
           </Typography>
           <Carousel
             slidesToShow={3}

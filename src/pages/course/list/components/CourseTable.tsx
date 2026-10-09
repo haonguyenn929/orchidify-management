@@ -34,10 +34,12 @@ const CourseTable = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const navigate = useNavigate()
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: courses, error: apiError } = await getCourseList(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -62,6 +64,7 @@ const CourseTable = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getCourseList, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -86,7 +89,8 @@ const CourseTable = () => {
 
   return (
     <Table
-      title='Danh sách khóa học'
+      title='Course List'
+      isLoading={isLoading}
       tableOptions={{
         columns: courseColumns,
         data: data.docs || [],

@@ -37,11 +37,13 @@ const ClassTable = ({ statusFilter }: ClassTableProps) => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const navigate = useNavigate()
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: classes, error: apiError } = await getClassList(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -69,6 +71,7 @@ const ClassTable = ({ statusFilter }: ClassTableProps) => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getClassList, pagination.pageIndex, pagination.pageSize, sorting, columnFilters, statusFilter])
 
@@ -78,7 +81,8 @@ const ClassTable = ({ statusFilter }: ClassTableProps) => {
 
   return (
     <Table
-      title='Danh sách lớp học'
+      title='Class List'
+      isLoading={isLoading}
       tableOptions={{
         columns: classColumns,
         data: data.docs || [],

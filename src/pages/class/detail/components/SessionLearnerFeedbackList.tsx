@@ -18,9 +18,9 @@ const SessionLearnerFeedbackList = ({ classId, sessions, learners }: CourseDetai
       <CustomTabs
         name='classDetail'
         items={[
-          { label: 'BUỔI HỌC', content: <SessionTable classId={classId} sessions={sessions} /> },
-          { label: 'HỌC VIÊN', content: <LearnerTable learners={learners} /> },
-          { label: 'ĐÁNH GIÁ', content: <FeedbackTable classId={classId} /> }
+          { label: 'SESSIONS', content: <SessionTable classId={classId} sessions={sessions} /> },
+          { label: 'LEARNERS', content: <LearnerTable learners={learners} /> },
+          { label: 'FEEDBACK', content: <FeedbackTable classId={classId} /> }
         ]}
       />
     </Paper>

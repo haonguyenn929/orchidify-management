@@ -45,7 +45,7 @@ const Statistic = lazy(() => import('~/pages/statistic/Statistic'))
 
 export const publicRoute = {
   login: {
-    name: 'Đăng nhập',
+    name: 'Sign In',
     path: '/',
     Component: Login
   }
@@ -53,241 +53,241 @@ export const publicRoute = {
 
 export const protectedRoute = {
   dashboard: {
-    name: 'Trang chủ',
+    name: 'Dashboard',
     path: '/dashboard',
     Component: Dashboard,
     roles: [UserRole.ADMIN, UserRole.STAFF, UserRole.GARDEN_MANAGER]
   },
   gardenManagerList: {
-    name: 'Quản lý vườn',
+    name: 'Garden Managers',
     path: '/garden-managers',
     Component: ViewGardenManagerList,
     roles: [UserRole.STAFF]
   },
   gardenManagerDetail: {
-    name: 'Thông tin quản lý vườn',
+    name: 'Garden Manager Details',
     path: '/garden-managers/:id',
     Component: ViewGardenManagerDetail,
     roles: [UserRole.STAFF]
   },
   addGardenManager: {
-    name: 'Thêm Quản lý vườn',
+    name: 'Add Garden Manager',
     path: '/garden-managers/add',
     Component: AddGardenManager,
     roles: [UserRole.STAFF]
   },
   updateGardenManager: {
-    name: 'Cập nhật Quản lý vườn',
+    name: 'Update Garden Manager',
     path: '/garden-managers/:id/update',
     Component: UpdateGardenManager,
     roles: [UserRole.STAFF]
   },
   gardenList: {
-    name: 'Nhà vườn',
+    name: 'Gardens',
     path: '/gardens',
     Component: ViewGardenList,
     roles: [UserRole.STAFF, UserRole.GARDEN_MANAGER]
   },
   addGarden: {
-    name: 'Thêm nhà vườn',
+    name: 'Add Garden',
     path: '/gardens/add',
     Component: AddGarden,
     roles: [UserRole.STAFF]
   },
   gardenDetail: {
-    name: 'Thông tin nhà vườn',
+    name: 'Garden Details',
     path: '/gardens/:id',
     Component: ViewGardenDetail,
     roles: [UserRole.STAFF, UserRole.GARDEN_MANAGER]
   },
   updateGardenInfo: {
-    name: 'Cập nhật nhà vườn',
+    name: 'Update Garden',
     path: '/gardens/:id/update',
     Component: UpdateGardenInfo,
     roles: [UserRole.STAFF, UserRole.GARDEN_MANAGER]
   },
   updateGardenManagerOfGarden: {
-    name: 'Thay đổi quản lý vườn',
+    name: 'Change Garden Manager',
     path: '/gardens/:id/update-garden-manager',
     Component: UpdateGardenMangerOfGarden,
     roles: [UserRole.STAFF]
   },
   staffList: {
-    name: 'Nhân viên',
+    name: 'Staff',
     path: '/staffs',
     Component: ViewStaffList,
     roles: [UserRole.ADMIN]
   },
   staffDetail: {
-    name: 'Thông tin nhân viên',
+    name: 'Staff Details',
     path: '/staffs/:id',
     Component: ViewStaffDetail,
     roles: [UserRole.ADMIN]
   },
   addStaff: {
-    name: 'Thêm nhân viên',
+    name: 'Add Staff',
     path: '/staffs/add',
     Component: AddStaff,
     roles: [UserRole.ADMIN]
   },
   updateStaff: {
-    name: 'Cập nhật nhân viên',
+    name: 'Update Staff',
     path: '/staffs/:id/update',
     Component: UpdateStaff,
     roles: [UserRole.ADMIN]
   },
   learnerList: {
-    name: 'Học viên',
+    name: 'Learners',
     path: '/learners',
     Component: ViewLearnerList,
     roles: [UserRole.STAFF]
   },
   learnerDetail: {
-    name: 'Thông tin học viên',
+    name: 'Learner Details',
     path: '/learners/:id',
     Component: ViewLearnerDetail,
     roles: [UserRole.STAFF]
   },
   instructorList: {
-    name: 'Giảng viên',
+    name: 'Instructors',
     path: '/instructors',
     Component: ViewInstructorList,
     roles: [UserRole.STAFF]
   },
   instructorDetail: {
-    name: 'Thông tin giảng viên',
+    name: 'Instructor Details',
     path: '/instructors/:id',
     Component: ViewInstructorDetail,
     roles: [UserRole.STAFF]
   },
   instructorTimesheet: {
-    name: 'Lịch dạy',
+    name: 'Teaching Schedule',
     path: '/instructors/:id/timesheet',
     Component: InstructorTimesheet,
     roles: [UserRole.STAFF]
   },
   classRequestList: {
-    name: 'Yêu cầu lớp học',
+    name: 'Class Requests',
     path: '/class-requests',
     Component: ViewClassRequestList,
     roles: [UserRole.STAFF]
   },
   classRequestDetail: {
-    name: 'Chi tiết yêu cầu',
+    name: 'Request Details',
     path: '/class-requests/:id',
     Component: ViewClassRequestDetail,
     roles: [UserRole.STAFF]
   },
   recruitmentList: {
-    name: 'Đơn tuyển',
+    name: 'Recruitments',
     path: '/recruitments',
     Component: ViewRecruitmentList,
     roles: [UserRole.STAFF]
   },
   viewGardenTimesheet: {
-    name: 'Lịch',
+    name: 'Schedule',
     path: '/gardens/:id/timesheet',
     Component: ViewGardenTimesheet,
     roles: [UserRole.STAFF, UserRole.GARDEN_MANAGER]
   },
   updateGardenTimesheet: {
-    name: 'Cập nhật lịch',
+    name: 'Update Schedule',
     path: '/gardens/:id/timesheet/update',
     Component: UpdateGardenTimesheet,
     roles: [UserRole.STAFF]
   },
   courseList: {
-    name: 'Khóa học',
+    name: 'Courses',
     path: '/courses',
     Component: ViewCourseList,
     roles: [UserRole.STAFF]
   },
   courseDetail: {
-    name: 'Chi tiết khóa học',
+    name: 'Course Details',
     path: '/courses/:id',
     Component: CourseDetail,
     roles: [UserRole.STAFF]
   },
   courseSessionDetail: {
-    name: 'Chi tiết buổi học',
+    name: 'Session Details',
     path: '/courses/:courseId/sessions/:sessionId',
     Component: CourseSessionDetail,
     roles: [UserRole.STAFF]
   },
   classList: {
-    name: 'Lớp học',
+    name: 'Classes',
     path: '/classes',
     Component: ViewClassList,
     roles: [UserRole.STAFF]
   },
   classDetail: {
-    name: 'Chi tiết lớp học',
+    name: 'Class Details',
     path: '/classes/:id',
     Component: ViewClassDetail,
     roles: [UserRole.STAFF]
   },
   classSessionDetail: {
-    name: 'Chi tiết buổi học',
+    name: 'Session Details',
     path: '/classes/:classId/sessions/:sessionId',
     Component: ClassSessionDetail,
     roles: [UserRole.STAFF]
   },
   recruitmentDetail: {
-    name: 'Chi tiết đơn tuyển',
+    name: 'Recruitment Details',
     path: '/recruitments/:id',
     Component: ViewRecruitmentDetail,
     roles: [UserRole.STAFF]
   },
   addInstructor: {
-    name: 'Thêm giảng viên',
+    name: 'Add Instructor',
     path: '/instructors/add',
     Component: AddInstructor,
     roles: [UserRole.STAFF]
   },
   updateInstructor: {
-    name: 'Cập nhật giảng viên',
+    name: 'Update Instructor',
     path: '/instructors/:id/update',
     Component: UpdateInstructor,
     roles: [UserRole.STAFF]
   },
   payoutRequestList: {
-    name: 'Yêu cầu rút tiền',
+    name: 'Payout Requests',
     path: '/payout-requests',
     Component: ViewPayoutRequestList,
     roles: [UserRole.STAFF]
   },
   payoutRequestDetail: {
-    name: 'Chi tiết yêu cầu',
+    name: 'Request Details',
     path: '/payout-requests/:id',
     Component: ViewPayoutRequestDetail,
     roles: [UserRole.STAFF]
   },
   courseComboList: {
-    name: 'Combo khóa học',
+    name: 'Course Combos',
     path: '/course-combos',
     Component: ViewCourseComboList,
     roles: [UserRole.STAFF]
   },
   courseComboDetail: {
-    name: 'Chi tiết Combo khóa học',
+    name: 'Course Combo Details',
     path: '/course-combos/:id',
     Component: ViewCourseComboDetail,
     roles: [UserRole.STAFF]
   },
   transactionList: {
-    name: 'Giao dịch',
+    name: 'Transactions',
     path: '/transactions',
     Component: ViewTransactionList,
     roles: [UserRole.ADMIN]
   },
   transactionDetail: {
-    name: 'Chi tiết giao dịch',
+    name: 'Transaction Details',
     path: '/transactions/:id',
     Component: ViewTransactionDetail,
     roles: [UserRole.ADMIN]
   },
   statistic: {
-    name: 'Thống kê',
+    name: 'Statistics',
     path: '/statistic',
     Component: Statistic,
     roles: [UserRole.ADMIN]

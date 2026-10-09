@@ -52,7 +52,7 @@ export const useClassRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách yêu cầu lớp học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class request list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -71,7 +71,7 @@ export const useClassRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin yêu cầu') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('request information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -90,7 +90,7 @@ export const useClassRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Chấp nhận yêu cầu') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Approve Request') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -109,7 +109,7 @@ export const useClassRequestApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Từ chối yêu cầu') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Reject Request') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

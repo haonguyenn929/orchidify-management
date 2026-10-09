@@ -1,5 +1,6 @@
 import { Chip, SxProps, Theme } from '@mui/material'
 import { RequestStatus } from '~/global/app-status'
+import { baseTagStyles } from './tag.styles'
 
 interface RequestStatusTagProps {
   type: RequestStatus
@@ -11,7 +12,7 @@ const RequestStatusTag = ({ type }: RequestStatusTagProps) => {
 
   switch (type) {
     case RequestStatus.PENDING: {
-      label = 'Chờ duyệt'
+      label = 'Pending'
       styles = {
         backgroundColor: '#d4f7ff',
         '& .MuiChip-label': { color: '#5badd0' }
@@ -19,7 +20,7 @@ const RequestStatusTag = ({ type }: RequestStatusTagProps) => {
       break
     }
     case RequestStatus.APPROVED: {
-      label = 'Chấp nhận'
+      label = 'Accepted'
       styles = {
         backgroundColor: '#20c0171f',
         '& .MuiChip-label': { color: '#20c017' }
@@ -27,7 +28,7 @@ const RequestStatusTag = ({ type }: RequestStatusTagProps) => {
       break
     }
     case RequestStatus.REJECTED: {
-      label = 'Từ chối'
+      label = 'Rejected'
       styles = {
         backgroundColor: '#f668681f',
         '& .MuiChip-label': { color: '#f66868' }
@@ -35,7 +36,7 @@ const RequestStatusTag = ({ type }: RequestStatusTagProps) => {
       break
     }
     case RequestStatus.EXPIRED: {
-      label = 'Quá hạn'
+      label = 'Expired'
       styles = {
         backgroundColor: '#0000000a',
         '& .MuiChip-label': { color: '#0000007a' }
@@ -43,16 +44,22 @@ const RequestStatusTag = ({ type }: RequestStatusTagProps) => {
       break
     }
     case RequestStatus.CANCELED: {
-      label = 'Đã hủy'
+      label = 'Canceled'
       styles = {
-        backgroundColor: 'transparent',
-        '& .MuiChip-label': { color: '#0000007a', textDecoration: 'line-through' }
+        backgroundColor: '#7575751f',
+        '& .MuiChip-label': { color: '#757575' }
       }
       break
     }
   }
 
-  return <Chip label={label} variant={type === RequestStatus.CANCELED ? 'outlined' : 'filled'} sx={styles} />
+  return (
+    <Chip
+      label={label}
+      variant='filled'
+      sx={[baseTagStyles, ...(Array.isArray(styles) ? styles : [styles])]}
+    />
+  )
 }
 
 export default RequestStatusTag

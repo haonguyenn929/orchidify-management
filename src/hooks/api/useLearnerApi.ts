@@ -44,7 +44,7 @@ export const useLearnerApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách học viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('learner list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -63,7 +63,7 @@ export const useLearnerApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin học viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('learner information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -82,7 +82,7 @@ export const useLearnerApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Kích hoạt học viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Activate Learner') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -101,7 +101,7 @@ export const useLearnerApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Vô hiệu hóa học viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Deactivate Learner') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

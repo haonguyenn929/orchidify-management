@@ -130,7 +130,7 @@ export const ControlledFileAreaUpload = <TFieldValues extends FieldValues>({
         <Box display='flex' flexDirection='column' alignItems='center' paddingBottom={2}>
           <Cloud sx={{ width: 35, height: 35 }} color='primary' />
           <Typography variant='caption' margin='10px 0'>
-            Bấm tải lên
+            Click to upload
           </Typography>
           <CloudinaryUploadWidget
             buttonStyle={{ width: 'fit-content' }}

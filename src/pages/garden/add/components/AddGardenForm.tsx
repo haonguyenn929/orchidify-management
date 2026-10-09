@@ -36,25 +36,25 @@ const defaultFormValues: FormValues = {
 const validationSchema = z.object({
   name: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Tên quản lý vườn'))
-    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Tên quản lý vườn', 50)),
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Garden Manager Name'))
+    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Garden Manager Name', 50)),
   address: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Địa chỉ'))
-    .max(100, APP_MESSAGE.FIELD_TOO_LONG('Địa chỉ', 100)),
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Address'))
+    .max(100, APP_MESSAGE.FIELD_TOO_LONG('Address', 100)),
   addressLink: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Link địa chỉ'))
-    .max(100, APP_MESSAGE.FIELD_TOO_LONG('Link địa chỉ', 100)),
-  gardenManagerId: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Quản lý vườn')),
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Address Link'))
+    .max(100, APP_MESSAGE.FIELD_TOO_LONG('Address Link', 100)),
+  gardenManagerId: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Garden Managers')),
   description: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Mô tả'))
-    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Mô tả', 500)),
-  images: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Hình ảnh nhà vườn')),
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Description'))
+    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Description', 500)),
+  images: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Garden Images')),
   maxClass: z.coerce
-    .number({ message: APP_MESSAGE.INVALID_VALUE(['số nguyên']) })
-    .int({ message: APP_MESSAGE.INVALID_VALUE(['số nguyên']) })
+    .number({ message: APP_MESSAGE.INVALID_VALUE(['integer']) })
+    .int({ message: APP_MESSAGE.INVALID_VALUE(['integer']) })
     .min(1, APP_MESSAGE.VALUE_OUT_OF_RANGE(1, 4))
     .max(4, APP_MESSAGE.VALUE_OUT_OF_RANGE(1, 4))
 })
@@ -77,7 +77,7 @@ const AddGardenForm = () => {
       notifyError(error.message)
       return
     }
-    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Thêm nhà vườn'))
+    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Add Garden'))
     navigate(protectedRoute.gardenList.path, { replace: true })
   })
 
@@ -86,7 +86,7 @@ const AddGardenForm = () => {
       <Paper sx={{ width: '100%', marginY: '20px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin nhà vườn
+            Garden Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -94,7 +94,7 @@ const AddGardenForm = () => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
-              label='Tên nhà vườn'
+              label='Garden Name'
               fullWidth
               size='small'
             />
@@ -106,7 +106,7 @@ const AddGardenForm = () => {
             <Grid item xs={12} lg={6}>
               <ControlledOutlinedInput
                 controller={{ name: 'maxClass', control: control }}
-                label='Số lớp học tối đa mỗi tiết'
+                label='Max classes per slot'
                 inputMode='numeric'
                 fullWidth
                 size='small'
@@ -116,7 +116,7 @@ const AddGardenForm = () => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'address', control: control }}
-              label='Địa chỉ'
+              label='Address'
               fullWidth
               size='small'
             />
@@ -124,7 +124,7 @@ const AddGardenForm = () => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'addressLink', control: control }}
-              label='Link địa chỉ'
+              label='Address Link'
               fullWidth
               size='small'
             />
@@ -135,7 +135,7 @@ const AddGardenForm = () => {
               multiline
               minRows={5}
               maxRows={5}
-              label='Mô tả'
+              label='Description'
               fullWidth
             />
           </Grid>
@@ -145,7 +145,7 @@ const AddGardenForm = () => {
         </Grid>
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Thêm
+        Add
       </Button>
     </StyledForm>
   )

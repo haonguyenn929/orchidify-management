@@ -23,9 +23,9 @@ const defaultFormValues: FormValues = {
 const validationSchema = z.object({
   transactionCode: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Mã giao dịch'))
-    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Mã giao dịch', 500)),
-  attachment: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Ảnh giao dịch'))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Transaction Code'))
+    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Transaction Code', 500)),
+  attachment: z.array(z.object({}).passthrough()).nonempty(APP_MESSAGE.REQUIRED_FIELD('Transaction Image'))
 })
 
 interface PayoutRequestDialogProps {
@@ -56,7 +56,7 @@ const MakePayoutDialog = ({ requestId, open, handleClose, onSuccess }: PayoutReq
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Xác thực giao dịch'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('verify transaction'))
       onSuccess()
     }
     handleClose()
@@ -72,24 +72,24 @@ const MakePayoutDialog = ({ requestId, open, handleClose, onSuccess }: PayoutReq
       onSubmit={handleSubmit(handlePayout)}
       handleCancel={handleCancel}
       isProcessing={isSubmitting}
-      title='Xác thực giao dịch'
-      description={APP_MESSAGE.CONFIRM_ACTION('xác thực giao dịch này')}
-      confirmButtonText='Xác nhận'
+      title='Verify Transaction'
+      description={APP_MESSAGE.CONFIRM_ACTION('verify this transaction')}
+      confirmButtonText='Confirm'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       formContent={
         <>
           {' '}
           <ControlledOutlinedInput
             controller={{ name: 'transactionCode', control: control }}
-            label='Mã giao dịch'
+            label='Transaction Code'
             fullWidth
             size='small'
             sx={{ margin: '0.5rem 0 1rem' }}
           />
           <ControlledFileFieldUpload
             controller={{ name: 'attachment', control: control }}
-            label='Ảnh giao dịch'
+            label='Transaction Image'
             clientAllowedFormats={[FileFormat.jpeg, FileFormat.jpg, FileFormat.png]}
             minFile={1}
             maxFileSize={FileSize['5MB']}

@@ -35,10 +35,12 @@ const ViewLearnerList = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: learner, error: apiError } = await getAllLearners(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -63,6 +65,7 @@ const ViewLearnerList = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllLearners, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -74,11 +77,12 @@ const ViewLearnerList = () => {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Học viên
+          Learners
         </Typography>
       </TitleWrapper>
       <Table
-        title='Danh sách học viên'
+        title='Learner List'
+        isLoading={isLoading}
         tableOptions={{
           columns: LearnerColumns,
           data: data.docs || [],

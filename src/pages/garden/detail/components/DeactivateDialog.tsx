@@ -22,7 +22,7 @@ const DeactivateDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Vô hiệu hóa nhà vườn'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Deactivate Garden'))
       onSuccess()
     }
     handleClose()
@@ -40,11 +40,11 @@ const DeactivateDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
       handleConfirm={() => gardenId && handleDeactivate(gardenId)}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận vô hiệu hóa'
-      description={APP_MESSAGE.CONFIRM_ACTION('vô hiệu hóa nhà vườn này')}
-      confirmButtonText='Vô hiệu hóa'
+      title='Confirm Deactivation'
+      description={APP_MESSAGE.CONFIRM_ACTION('deactivate this garden')}
+      confirmButtonText='Inactive'
       confirmButtonColor='error'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

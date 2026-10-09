@@ -23,7 +23,7 @@ const Field: React.FC<FieldProps> = ({ label, content, requestType, statusTag })
     )}
     {requestType && (
       <Typography variant='subtitle1' fontWeight={400}>
-        {requestType === RequestType.PUBLISH_CLASS ? 'Yêu cầu mở lớp' : 'Yêu cầu hủy lớp học'}
+        {requestType === RequestType.PUBLISH_CLASS ? 'Open Class Request' : 'Cancel Class Request'}
       </Typography>
     )}
     {statusTag && <RequestStatusTag type={statusTag} />}
@@ -39,30 +39,30 @@ const InstructorRequestDetailInformationProps = ({ request }: InstructorRequestD
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Thông tin yêu cầu
+          Request Information
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
       <Box marginBottom='1.25rem'>
-        <Field label='Loại yêu cầu' requestType={request.type} />
-        <Field label='Tên giảng viên' content={typeof request.createdBy === 'string' ? '' : request.createdBy.name} />
-        <Field label='Thời gian tạo' content={new Date(request.createdAt).toLocaleString('vi-VN')} />
-        <Field label='Cập nhật cuối' content={new Date(request.updatedAt).toLocaleString('vi-VN')} />
-        <Field label='Trạng thái' statusTag={request.status} />
+        <Field label='Request Type' requestType={request.type} />
+        <Field label='Instructor Name' content={typeof request.createdBy === 'string' ? '' : request.createdBy.name} />
+        <Field label='Created at' content={new Date(request.createdAt).toLocaleString('en-US')} />
+        <Field label='Last updated' content={new Date(request.updatedAt).toLocaleString('en-US')} />
+        <Field label='Status' statusTag={request.status} />
       </Box>
       {request.status === RequestStatus.REJECTED ? (
         <Box marginBottom='1.25rem'>
           <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-            Lý do từ chối
+            Rejection reason
           </Typography>
           <Typography variant='subtitle1' fontWeight={400}>
-            {request.rejectReason ? request.rejectReason : 'Không có lý do'}
+            {request.rejectReason ? request.rejectReason : 'No reason provided'}
           </Typography>
         </Box>
       ) : null}
       <Box>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Mô tả yêu cầu
+          Request Description
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {request.description}

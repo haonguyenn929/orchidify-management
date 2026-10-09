@@ -8,7 +8,7 @@ const AddInstructor = () => {
   return (
     <Box sx={{ marginBottom: '20px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Thêm giảng viên
+        Add Instructor
       </Typography>
       <Breadcrumbs items={items} />
       <AddInstructorForm />

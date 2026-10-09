@@ -15,8 +15,8 @@ const CourseDetailResourceAndFeedback = ({ sessions, courseId }: CourseDetailRes
       <CustomTabs
         name='courseDetail'
         items={[
-          { label: 'BUỔI HỌC', content: <SessionTable courseId={courseId} sessions={sessions} /> },
-          { label: 'ĐÁNH GIÁ', content: <FeedbackTable courseId={courseId} /> }
+          { label: 'SESSIONS', content: <SessionTable courseId={courseId} sessions={sessions} /> },
+          { label: 'FEEDBACK', content: <FeedbackTable courseId={courseId} /> }
         ]}
       />
       '

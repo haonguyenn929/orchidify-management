@@ -54,7 +54,7 @@ export const useStaffApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách nhân viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('staff list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -73,7 +73,7 @@ export const useStaffApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin nhân viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('staff information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -91,7 +91,7 @@ export const useStaffApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('thêm nhân viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('add staff') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -110,7 +110,7 @@ export const useStaffApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('cập nhật nhân viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('update staff') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -129,7 +129,7 @@ export const useStaffApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Kích hoạt nhân viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Activate Staff') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -148,7 +148,7 @@ export const useStaffApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Vô hiệu hóa nhân viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Deactivate Staff') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

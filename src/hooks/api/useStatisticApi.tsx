@@ -36,7 +36,7 @@ export const useStatisticApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số doanh thu trong tháng') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('monthly revenue report') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -54,7 +54,7 @@ export const useStatisticApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo khóa học theo đánh giá') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('course report by rating') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 
@@ -70,7 +70,7 @@ export const useStatisticApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số lượng lớp học theo trạng thái') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class count by status report') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 
@@ -86,7 +86,7 @@ export const useStatisticApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo lớp học theo đánh giá') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class report by rating') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 
@@ -108,7 +108,7 @@ export const useStatisticApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số giảng viên mới trong tháng') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('new instructors per month report') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -127,7 +127,7 @@ export const useStatisticApi = () => {
     return {
       data: null,
       error: {
-        message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số lượng giảng viên theo trạng thái')
+        message: APP_MESSAGE.LOAD_DATA_FAILED('instructor count by status report')
       } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
@@ -150,7 +150,7 @@ export const useStatisticApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số học viên mới trong tháng') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('new learners per month report') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -169,7 +169,7 @@ export const useStatisticApi = () => {
     return {
       data: null,
       error: {
-        message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số lượng học viên theo trạng thái')
+        message: APP_MESSAGE.LOAD_DATA_FAILED('learner count by status report')
       } as ErrorResponseDto
     }
   }, [callAppProtectedApi])

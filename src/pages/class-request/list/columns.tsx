@@ -9,7 +9,7 @@ import { formatRequestType } from '~/utils/format'
 export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>[] = [
   {
     accessorKey: 'type',
-    header: 'Loại yêu cầu',
+    header: 'Request Type',
     size: 140,
     grow: false,
     Cell: ({ row }) => {
@@ -18,22 +18,22 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Mở lớp học', value: RequestType.PUBLISH_CLASS },
-      { label: 'Hủy lớp học', value: RequestType.CANCEL_CLASS }
+      { label: 'Open Class', value: RequestType.PUBLISH_CLASS },
+      { label: 'Cancel Class', value: RequestType.CANCEL_CLASS }
     ]
   },
   {
     accessorKey: 'metadata.code',
-    header: 'Mã lớp học',
+    header: 'Class Code',
     size: 150,
     Cell: ({ row: { original } }) => {
-      return original.type === RequestType.PUBLISH_CLASS ? 'Không có dữ liệu' : original.metadata.code
+      return original.type === RequestType.PUBLISH_CLASS ? 'No data' : original.metadata.code
     },
     enableColumnFilter: false
   },
   {
     accessorFn: (row) => row.metadata.course,
-    header: 'Mã khóa học',
+    header: 'Course Code',
     size: 140,
     grow: false,
     Cell: ({ row: { original } }) => {
@@ -43,19 +43,19 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
   },
   {
     accessorFn: (row) => row.metadata.title,
-    header: 'Tên khóa học',
+    header: 'Course Name',
     enableColumnFilter: false
   },
   {
     accessorKey: 'createdBy.name',
-    header: 'Giảng viên',
-    size: 250,
+    header: 'Instructors',
+    size: 160,
     grow: false,
     enableColumnFilter: false
   },
   {
     accessorKey: 'createdAt',
-    header: 'Thời gian tạo',
+    header: 'Created at',
     size: 150,
     grow: false,
     enableColumnFilter: false,
@@ -70,10 +70,10 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
       return (
         <>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleTimeString('vi-VN')}
+            {new Date(date).toLocaleTimeString('en-US')}
           </Typography>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleDateString('vi-VN')}
+            {new Date(date).toLocaleDateString('en-US')}
           </Typography>
         </>
       )
@@ -81,7 +81,7 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
   },
   {
     accessorKey: 'updatedAt',
-    header: 'Cập nhật cuối',
+    header: 'Last updated',
     size: 150,
     grow: false,
     enableColumnFilter: false,
@@ -96,10 +96,10 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
       return (
         <>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleTimeString('vi-VN')}
+            {new Date(date).toLocaleTimeString('en-US')}
           </Typography>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleDateString('vi-VN')}
+            {new Date(date).toLocaleDateString('en-US')}
           </Typography>
         </>
       )
@@ -107,7 +107,7 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 130,
     grow: false,
     Cell: ({ row }) => {
@@ -116,11 +116,11 @@ export const ClassRequestColumns: MRT_ColumnDef<ClassRequestListItemResponseDto>
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Chờ duyệt', value: RequestStatus.PENDING },
-      { label: 'Chấp nhận', value: RequestStatus.APPROVED },
-      { label: 'Từ chối', value: RequestStatus.REJECTED },
-      { label: 'Hủy', value: RequestStatus.CANCELED },
-      { label: 'Hết hạn', value: RequestStatus.EXPIRED }
+      { label: 'Pending', value: RequestStatus.PENDING },
+      { label: 'Accepted', value: RequestStatus.APPROVED },
+      { label: 'Rejected', value: RequestStatus.REJECTED },
+      { label: 'Canceled', value: RequestStatus.CANCELED },
+      { label: 'Expired', value: RequestStatus.EXPIRED }
     ],
     enableSorting: false
   }

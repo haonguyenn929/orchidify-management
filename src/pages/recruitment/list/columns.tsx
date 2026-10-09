@@ -7,7 +7,7 @@ import { RecruitmentStatus } from '~/global/app-status'
 export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[] = [
   {
     accessorFn: (row) => row.applicationInfo.name,
-    header: 'Ứng viên',
+    header: 'Applicant',
     size: 250
   },
   {
@@ -17,13 +17,13 @@ export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[]
   },
   {
     accessorFn: (row) => row.applicationInfo.phone,
-    header: 'Số điện thoại',
+    header: 'Phone number',
     size: 100,
     enableColumnFilter: false
   },
   {
     accessorKey: 'createdAt',
-    header: 'Thời gian tạo',
+    header: 'Created at',
     size: 100,
     enableColumnFilter: false,
     Cell: ({ cell }) => {
@@ -31,10 +31,10 @@ export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[]
       return (
         <>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleTimeString('vi-VN')}
+            {new Date(date).toLocaleTimeString('en-US')}
           </Typography>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleDateString('vi-VN')}
+            {new Date(date).toLocaleDateString('en-US')}
           </Typography>
         </>
       )
@@ -42,7 +42,7 @@ export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[]
   },
   {
     accessorKey: 'updatedAt',
-    header: 'Cập nhật cuối',
+    header: 'Last updated',
     size: 100,
     enableColumnFilter: false,
     Cell: ({ cell }) => {
@@ -50,10 +50,10 @@ export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[]
       return (
         <>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleTimeString('vi-VN')}
+            {new Date(date).toLocaleTimeString('en-US')}
           </Typography>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleDateString('vi-VN')}
+            {new Date(date).toLocaleDateString('en-US')}
           </Typography>
         </>
       )
@@ -61,13 +61,13 @@ export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[]
   },
   {
     accessorKey: 'handledBy.name',
-    header: 'Nhân viên duyệt',
+    header: 'Approved By Staff',
     size: 250,
     enableColumnFilter: false
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 150,
     Cell: ({ row }) => {
       const type = row.original.status
@@ -75,11 +75,11 @@ export const RecruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[]
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Chờ duyệt', value: RecruitmentStatus.PENDING },
-      { label: 'Đang phỏng vấn', value: RecruitmentStatus.INTERVIEWING },
-      { label: 'Chấp nhận', value: RecruitmentStatus.SELECTED },
-      { label: 'Từ chối', value: RecruitmentStatus.REJECTED },
-      { label: 'Hết hạn', value: RecruitmentStatus.EXPIRED }
+      { label: 'Pending', value: RecruitmentStatus.PENDING },
+      { label: 'Interviewing', value: RecruitmentStatus.INTERVIEWING },
+      { label: 'Accepted', value: RecruitmentStatus.SELECTED },
+      { label: 'Rejected', value: RecruitmentStatus.REJECTED },
+      { label: 'Expired', value: RecruitmentStatus.EXPIRED }
     ]
   }
 ]

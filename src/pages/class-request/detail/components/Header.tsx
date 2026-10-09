@@ -14,15 +14,15 @@ const Header = ({ classRequestStatus, onApproveButtonClick, onRejectButtonClick 
 
   return (
     <Box display='flex' justifyContent='space-between' alignItems='center'>
-      <PageHeader title='Chi tiết yêu cầu' breadcrumbsItems={breadcrumbsItems} />
+      <PageHeader title='Request Details' breadcrumbsItems={breadcrumbsItems} />
       <Box display='flex' justifyContent='space-between' gap='1.5rem'>
         {classRequestStatus === RequestStatus.PENDING ? (
           <>
             <Button color='secondary' onClick={onApproveButtonClick}>
-              Chấp nhận
+              Accepted
             </Button>
             <Button color='error' onClick={onRejectButtonClick}>
-              Từ chối
+              Rejected
             </Button>
           </>
         ) : null}

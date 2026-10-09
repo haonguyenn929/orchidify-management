@@ -103,19 +103,19 @@ const ViewPayoutRequestDetail = () => {
       <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem', marginBottom: '1.25rem' }}>
         <Box display='flex' alignItems='center' marginBottom='1.25rem'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-            Thông tin yêu cầu
+            Request Information
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
-        <Field label='Tên giảng viên' content={payoutRequest.createdBy.name} />
-        <Field label='Số tiền' content={formatCurrency(payoutRequest.amount)} />
-        <Field label='Thời gian tạo' content={new Date(payoutRequest.createdAt).toLocaleString('vi-VN')} />
-        <Field label='Cập nhật cuối' content={new Date(payoutRequest.updatedAt).toLocaleString('vi-VN')} />
-        <Field label='Trạng thái' statusTag={payoutRequest.status} />
+        <Field label='Instructor Name' content={payoutRequest.createdBy.name} />
+        <Field label='Amount' content={formatCurrency(payoutRequest.amount)} />
+        <Field label='Created at' content={new Date(payoutRequest.createdAt).toLocaleString('en-US')} />
+        <Field label='Last updated' content={new Date(payoutRequest.updatedAt).toLocaleString('en-US')} />
+        <Field label='Status' statusTag={payoutRequest.status} />
         {payoutRequest.status === RequestStatus.REJECTED ? (
           <Box marginTop='1.5rem'>
             <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-              Lý do từ chối
+              Rejection reason
             </Typography>
             <Typography variant='subtitle1' fontWeight={400}>
               {payoutRequest.rejectReason}
@@ -124,7 +124,7 @@ const ViewPayoutRequestDetail = () => {
         ) : null}
         <Box marginTop='1.5rem'>
           <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-            Mô tả yêu cầu
+            Request Description
           </Typography>
           <Typography variant='subtitle1' fontWeight={400}>
             {payoutRequest.description}
@@ -134,49 +134,49 @@ const ViewPayoutRequestDetail = () => {
       <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem', marginBottom: '1.25rem' }}>
         <Box display='flex' alignItems='center' marginBottom='1.25rem'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-            Thông tin TK rút tiền
+            Payout Account Information
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
 
         <Field
-          label='Tên ngân hàng'
+          label='Bank Name'
           content={`${payoutRequest.createdBy.paymentInfo.bankShortName} - ${payoutRequest.createdBy.paymentInfo.bankName}`}
         />
-        <Field label='Tên TK' content={payoutRequest.createdBy.paymentInfo.accountName} />
+        <Field label='Account Name' content={payoutRequest.createdBy.paymentInfo.accountName} />
         <Field label='STK' content={payoutRequest.createdBy.paymentInfo.accountNumber} />
       </Paper>
       {payoutRequest.status === RequestStatus.APPROVED ? (
         <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
           <Box display='flex' alignItems='center' marginBottom='1.25rem'>
             <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-              Thông tin giao dịch
+              Transaction Information
             </Typography>
             <Divider sx={{ flexGrow: 1 }} />
           </Box>
           <Box display='flex' marginY='0.25rem'>
             <Typography variant='subtitle1' fontWeight={600} width={'180px'}>
-              Trạng thái:
+              Status:
             </Typography>
             {payoutRequest.hasMadePayout ? (
               <>
-                Đã thực hiện <Check sx={{ marginLeft: '0.5rem', color: '#34B233' }} />
+                Fulfilled <Check sx={{ marginLeft: '0.5rem', color: '#34B233' }} />
               </>
             ) : (
               <>
-                Chưa thực hiện
+                Pending
                 <Close sx={{ marginLeft: '0.5rem', color: '#FF605C' }} />
               </>
             )}
           </Box>
           {payoutRequest.transactionCode ? (
-            <Field label='Mã giao dịch' content={payoutRequest.transactionCode} />
+            <Field label='Transaction Code' content={payoutRequest.transactionCode} />
           ) : null}
           {payoutRequest.attachment ? (
             <Box width='200px' height='200px'>
               <img
                 src={payoutRequest.attachment.url}
-                alt='Hình ảnh thông tin giao dịch'
+                alt='Transaction Image'
                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }}
               />
             </Box>

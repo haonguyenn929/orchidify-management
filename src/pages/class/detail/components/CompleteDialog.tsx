@@ -24,7 +24,7 @@ const CompleteDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Kết thúc lớp học'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('End Class'))
       onSuccess()
     }
 
@@ -43,11 +43,11 @@ const CompleteDialog = ({ open, handleClose, onSuccess }: DialogProps) => {
       handleConfirm={() => classId && handleComplete(classId)}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận kết thúc lớp học'
-      description={APP_MESSAGE.CONFIRM_ACTION('kết thúc lớp học')}
-      confirmButtonText='Kết thúc'
+      title='Confirm End Class'
+      description={APP_MESSAGE.CONFIRM_ACTION('end class')}
+      confirmButtonText='End'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

@@ -32,7 +32,7 @@ const UpdateGardenManager = () => {
   }, [gardenId, getGardenById])
 
   if (!gardenId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin quản lý vườn'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('garden manager information'))
     navigate(protectedRoute.gardenList.path, { replace: true })
     return
   }
@@ -54,7 +54,7 @@ const UpdateGardenManager = () => {
   return data ? (
     <Box sx={{ marginBottom: '40px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Thông tin quản lý vườn
+        Garden Manager Details
       </Typography>
       <Breadcrumbs items={breadcrumbsItems} />
       <UpdateGardenManagerForm garden={data} />

@@ -67,31 +67,31 @@ const ClassToolkitRequirementsDialog = ({ open, onClose, data }: ClassToolkitReq
         <>
           <DialogTitle display='flex' alignItems='center'>
             <Typography variant='body1' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-              Thông tin lớp học
+              Class Information
             </Typography>
             <Divider sx={{ flexGrow: 1 }} />
           </DialogTitle>
           <DialogContent>
             <Box display='flex' flexDirection='column' gap={1} flexGrow='1'>
-              <Field label='Ngày' content={dayjs(slotData.start).format('DD/M/YYYY')} />
+              <Field label='Date' content={dayjs(slotData.start).format('DD/M/YYYY')} />
               <Field
-                label='Tiết học'
+                label='Slot'
                 content={
                   slotData.slotNumber +
                   ` (${dayjs(slotData.start).format('H:mm')} - ${dayjs(slotData.end).format('H:mm')})`
                 }
               />
-              <Field label='Mã lớp học' content={classData.code} />
-              <Field label='Mã khóa học' content={classData.course.code} />
-              <Field label='Tên khóa học' content={classData.title} />
-              <Field label='Buổi học' content={`${slotData.metadata?.sessionNumber}`} />
-              <Field label='Tên buổi học' content={`${slotData.metadata?.sessionTitle}`} />
-              <Field label='Giảng viên' content={classData.instructor.name} />
-              <Field label='Nhà vườn' content={slotData.garden?.name} />
+              <Field label='Class Code' content={classData.code} />
+              <Field label='Course Code' content={classData.course.code} />
+              <Field label='Course Name' content={classData.title} />
+              <Field label='Session' content={`${slotData.metadata?.sessionNumber}`} />
+              <Field label='Session Title' content={`${slotData.metadata?.sessionTitle}`} />
+              <Field label='Instructors' content={classData.instructor.name} />
+              <Field label='Gardens' content={slotData.garden?.name} />
             </Box>
             <Box marginTop='1.25rem'>
               <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-                Dụng cụ cần thiết
+                Required Toolkits
               </Typography>
               {classData.gardenRequiredToolkits.split(', ').map((tool, index) => (
                 <Typography key={index} variant='subtitle1' fontWeight={400} fontSize='16px'>

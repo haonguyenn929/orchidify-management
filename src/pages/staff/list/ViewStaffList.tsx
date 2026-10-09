@@ -36,10 +36,12 @@ const ViewStaffList = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: staff, error: apiError } = await getAllStaffs(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -64,6 +66,7 @@ const ViewStaffList = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllStaffs, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -75,7 +78,7 @@ const ViewStaffList = () => {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Nhân viên
+          Staff
         </Typography>
         <div style={{ display: 'flex' }}>
           <Button
@@ -86,12 +89,13 @@ const ViewStaffList = () => {
             sx={{ marginRight: '24px' }}
             endIcon={<AddIcon />}
           >
-            Thêm
+            Add
           </Button>
         </div>
       </TitleWrapper>
       <Table
-        title='Danh sách nhân viên'
+        title='Staff List'
+        isLoading={isLoading}
         tableOptions={{
           columns: StaffColumns,
           data: data.docs || [],

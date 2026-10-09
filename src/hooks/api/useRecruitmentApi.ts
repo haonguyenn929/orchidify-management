@@ -53,7 +53,7 @@ export const useRecruitmentApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách đơn tuyển') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('recruitment list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -72,7 +72,7 @@ export const useRecruitmentApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin đơn tuyển') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('recruitment information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -91,7 +91,7 @@ export const useRecruitmentApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Xử lý đơn tuyển') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Process Recruitment') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -110,7 +110,7 @@ export const useRecruitmentApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Chấp nhận ứng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Accept Applicant') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -129,7 +129,7 @@ export const useRecruitmentApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Từ chối đơn ứng tuyển') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Reject Application') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

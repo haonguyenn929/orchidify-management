@@ -66,7 +66,7 @@ const StaffChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Báo cáo nhân viên
+          Staff Report
         </Typography>
         <Typography
           variant='caption'
@@ -75,7 +75,7 @@ const StaffChart = () => {
           to={protectedRoute.staffList.path}
           sx={{ textDecoration: 'none' }}
         >
-          Xem tất cả
+          View all
         </Typography>
       </Box>
       <ChartDisplay data={chartData.docs} />
@@ -103,7 +103,7 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
     chart: {
       toolbar: { show: false }
     },
-    labels: ['Hoạt động', 'Vô hiệu hóa'],
+    labels: ['Active', 'Inactive'],
     colors: ['#20C017', '#F66868'],
     legend: {
       position: 'bottom',
@@ -127,7 +127,7 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
             show: true,
             total: {
               show: true,
-              label: 'Tổng'
+              label: 'Total'
             }
           }
         }

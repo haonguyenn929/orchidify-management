@@ -33,10 +33,12 @@ export default function ViewTransactionList() {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const navigate = useNavigate()
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: transactions, error: apiError } = await getTransactionList(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -61,6 +63,7 @@ export default function ViewTransactionList() {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getTransactionList, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -70,9 +73,10 @@ export default function ViewTransactionList() {
 
   return (
     <>
-      <PageHeader title='Giao dịch' />
+      <PageHeader title='Transactions' />
       <Table
-        title='Danh sách giao dịch'
+        title='Transaction List'
+        isLoading={isLoading}
         tableOptions={{
           columns: transactionColumns,
           data: data.docs || [],

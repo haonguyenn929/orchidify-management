@@ -29,7 +29,7 @@ interface UpdateGardenInfoFormProps {
 }
 
 const validationSchema = z.object({
-  gardenManagerId: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Quản lý vườn'))
+  gardenManagerId: z.string().min(1, APP_MESSAGE.REQUIRED_FIELD('Garden Managers'))
 })
 
 const UpdateGardenManagerForm = ({ garden }: UpdateGardenInfoFormProps) => {
@@ -63,7 +63,7 @@ const UpdateGardenManagerForm = ({ garden }: UpdateGardenInfoFormProps) => {
       notifyError(error.message)
       return
     }
-    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật quản lý vườn'))
+    notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Garden Manager'))
     navigate(protectedRoute.gardenDetail.path.replace(':id', garden._id))
   })
 
@@ -89,7 +89,7 @@ const UpdateGardenManagerForm = ({ garden }: UpdateGardenInfoFormProps) => {
       <Paper sx={{ width: '100%', marginY: '20px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin quản lý vườn
+            Garden Manager Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -97,7 +97,7 @@ const UpdateGardenManagerForm = ({ garden }: UpdateGardenInfoFormProps) => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
-              label='Tên nhà vườn'
+              label='Garden Name'
               fullWidth
               size='small'
               disabled
@@ -106,7 +106,7 @@ const UpdateGardenManagerForm = ({ garden }: UpdateGardenInfoFormProps) => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'address', control: control }}
-              label='Địa chỉ'
+              label='Address'
               fullWidth
               size='small'
               disabled
@@ -123,19 +123,19 @@ const UpdateGardenManagerForm = ({ garden }: UpdateGardenInfoFormProps) => {
               {gardenManagerData?.name}
             </Typography>
             <Typography variant='h6' fontSize={14} fontWeight={500} color={theme.label.secondary}>
-              Quản lý vườn
+              Garden Managers
             </Typography>
           </div>
         </Avatar>
         <Field
-          label='Tên quản lý vườn'
+          label='Garden Manager Name'
           content={<ContentText>{gardenManagerData?.name || ''}</ContentText>}
           theme={theme}
         />
         <Field label='Email' content={<ContentText>{gardenManagerData?.email || ''}</ContentText>} theme={theme} />
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Lưu
+        Save
       </Button>
     </StyledForm>
   )

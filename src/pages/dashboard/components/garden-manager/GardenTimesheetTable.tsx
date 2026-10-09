@@ -10,6 +10,7 @@ import ClassToolkitRequirementsDialog from '~/pages/garden/garden-timesheet/comp
 
 const GardenTimesheetTable = () => {
   const [slot, setSlot] = useState<GardenTimesheetItemResponseDto[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const { getSlotList } = useGardenTimesheetApi()
   const [classIdToolkitRequirements, setClassIdToolkitRequirements] = useState<{
     classId: string
@@ -18,6 +19,7 @@ const GardenTimesheetTable = () => {
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: slot, error: apiError } = await getSlotList(dayjs().format('YYYY-MM-DD'))
       if (slot) {
         setSlot(
@@ -35,13 +37,15 @@ const GardenTimesheetTable = () => {
       if (apiError) {
         notifyError(apiError.message)
       }
+      setIsLoading(false)
     })()
   }, [getSlotList])
 
   return (
     <>
       <Table
-        title='Danh sách tiết học'
+        title='Slot List'
+        isLoading={isLoading}
         tableOptions={{
           layoutMode: 'grid',
           columns: timesheetColumns,
@@ -52,7 +56,7 @@ const GardenTimesheetTable = () => {
               variant='body1'
               sx={{ color: 'rgba(0, 0, 0, 0.6)', fontStyle: 'italic', py: '2rem', textAlign: 'center', width: '100%' }}
             >
-              Không có tiết học
+              No slots available
             </Typography>
           ),
           enableSorting: false,
@@ -94,31 +98,31 @@ export default GardenTimesheetTable
 const timesheetColumns: MRT_ColumnDef<GardenTimesheetItemResponseDto>[] = [
   {
     accessorKey: 'garden.name',
-    header: 'Nhà vườn',
+    header: 'Gardens',
     size: 180,
     grow: false
   },
   {
     accessorKey: 'metadata.code',
-    header: 'Mã lớp học',
+    header: 'Class Code',
     size: 120,
     grow: false
   },
   {
     accessorKey: 'metadata.title',
-    header: 'Tên khóa học',
+    header: 'Course Name',
     size: 200,
     grow: true
   },
   {
     accessorKey: 'instructor.name',
-    header: 'Tên giảng viên',
+    header: 'Instructor Name',
     size: 100,
     grow: true
   },
   {
     accessorKey: 'slotNumber',
-    header: 'Tiết học',
+    header: 'Slot',
     size: 75,
     grow: false,
     Cell: ({ cell }) => {
@@ -129,21 +133,21 @@ const timesheetColumns: MRT_ColumnDef<GardenTimesheetItemResponseDto>[] = [
           fontWeight={'500'}
           color={slotNumber === 1 ? '#0084ff' : slotNumber === 2 ? '#00ba34' : slotNumber === 3 ? '#ff9f2d' : '#e92c2c'}
         >
-          Tiết {slotNumber}
+          Slot {slotNumber}
         </Typography>
       )
     }
   },
   {
     accessorKey: 'start',
-    header: 'Giờ học',
+    header: 'Class time',
     size: 120,
     grow: false,
     Cell: ({ row }) =>
-      `${new Date(row.original.start).toLocaleTimeString('vi-VN', {
+      `${new Date(row.original.start).toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit'
-      })} - ${new Date(row.original.end).toLocaleTimeString('vi-VN', {
+      })} - ${new Date(row.original.end).toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit'
       })}`,

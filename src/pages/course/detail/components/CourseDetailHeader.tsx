@@ -7,7 +7,7 @@ const CourseDetailHeader = () => {
 
   return (
     <Box display='flex' justifyContent='space-between' alignItems='center'>
-      <PageHeader title='Chi tiết khóa học' breadcrumbsItems={breadcrumbsItems} />
+      <PageHeader title='Course Details' breadcrumbsItems={breadcrumbsItems} />
     </Box>
   )
 }

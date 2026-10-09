@@ -8,7 +8,7 @@ export default function AddGardenManager() {
   return (
     <Box sx={{ marginBottom: '20px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Thêm quản lý vườn
+        Add Garden Manager
       </Typography>
       <Breadcrumbs items={items} />
       <AddGardenManagerForm />

@@ -15,18 +15,18 @@ export const sessionColumns: MRT_ColumnDef<SessionDto>[] = [
   },
   {
     accessorKey: 'title',
-    header: 'Tên bài học'
+    header: 'Lesson Title'
   },
   {
     accessorKey: 'description',
-    header: 'Mô tả',
+    header: 'Description',
     size: 500
   },
   {
     /*
       Only allow 1 assignment per session 
      */
-    header: 'Bài tập',
+    header: 'Assignments',
     size: 200,
     Cell: ({ row }) => (row.original.assignments.length > 0 ? row.original.assignments[0].title : '')
   }

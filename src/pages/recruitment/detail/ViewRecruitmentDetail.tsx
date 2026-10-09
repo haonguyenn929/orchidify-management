@@ -122,39 +122,39 @@ const ViewRecruitmentDetail = () => {
       <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
         <Box display='flex' alignItems='center' marginBottom='1.25rem'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-            Thông tin đơn tuyển
+            Recruitment Information
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
-        <Field label='Tên ứng viên' content={recruitment.applicationInfo.name} />
+        <Field label='Applicant Name' content={recruitment.applicationInfo.name} />
         <Field label='Email' content={recruitment.applicationInfo.email} />
-        <Field label='Số điện thoại' content={recruitment.applicationInfo.phone} />
+        <Field label='Phone number' content={recruitment.applicationInfo.phone} />
         <Box marginY='1rem'>
           <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-            Ghi chú:
+            Notes:
           </Typography>
           <Typography variant='subtitle1' fontWeight={400}>
             {recruitment.applicationInfo.note}
           </Typography>
         </Box>
         <Divider sx={{ flexGrow: 1 }} />
-        {recruitment.handledBy ? <Field label='Nhân viên duyệt' content={recruitment.handledBy.name} /> : null}
-        <Field label='Thời gian tạo' content={new Date(recruitment.createdAt).toLocaleString('vi-VN')} />
-        <Field label='Cập nhật cuối' content={new Date(recruitment.updatedAt).toLocaleString('vi-VN')} />
-        <Field label='Trạng thái' statusTag={recruitment.status} />
+        {recruitment.handledBy ? <Field label='Approved By Staff' content={recruitment.handledBy.name} /> : null}
+        <Field label='Created at' content={new Date(recruitment.createdAt).toLocaleString('en-US')} />
+        <Field label='Last updated' content={new Date(recruitment.updatedAt).toLocaleString('en-US')} />
+        <Field label='Status' statusTag={recruitment.status} />
         {recruitment.status === RecruitmentStatus.INTERVIEWING ? (
           <>
             <Field
-              label='Thời gian diễn ra cuộc họp'
+              label='Meeting Time'
               content={new Date(recruitment.meetingDate).toLocaleString('VI-vn')}
             />
-            <Field label='Đường dẫn cuộc họp' content={recruitment.meetingUrl} isLink={true} />
+            <Field label='Meeting URL' content={recruitment.meetingUrl} isLink={true} />
           </>
         ) : null}
         {recruitment.rejectReason && (
           <Box marginY='1rem'>
             <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-              Lí do từ chối:
+              Rejection Reason:
             </Typography>
             <Typography variant='subtitle1' fontWeight={400}>
               {recruitment.rejectReason}

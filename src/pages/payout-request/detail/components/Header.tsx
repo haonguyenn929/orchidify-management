@@ -23,10 +23,10 @@ const Header: React.FC<HeaderProps> = ({
   const renderPendingButtons = () => (
     <>
       <Button color='secondary' onClick={onApproveButtonClick}>
-        Chấp nhận
+        Approve
       </Button>
       <Button color='error' onClick={onRejectButtonClick}>
-        Từ chối
+        Reject
       </Button>
     </>
   )
@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({
   const renderApprovedButtons = () =>
     hasMadePayout ? null : (
       <Button color='secondary' onClick={onPayoutButtonClick}>
-        Giao dịch
+        Payout
       </Button>
     )
 
@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <Box display='flex' justifyContent='space-between' alignItems='center'>
-      <PageHeader title='Chi tiết yêu cầu' breadcrumbsItems={breadcrumbsItems} />
+      <PageHeader title='Request Details' breadcrumbsItems={breadcrumbsItems} />
       <Box display='flex' justifyContent='space-between' gap='1.5rem'>
         {renderButtons()}
       </Box>

@@ -35,10 +35,12 @@ export default function ViewClassRequestList() {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: classRequests, error: apiError } = await getAllClassRequests(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -63,6 +65,7 @@ export default function ViewClassRequestList() {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllClassRequests, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -74,11 +77,12 @@ export default function ViewClassRequestList() {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Yêu cầu lớp học
+          Class Requests
         </Typography>
       </TitleWrapper>
       <Table
-        title='Danh sách lớp học'
+        title='Class List'
+        isLoading={isLoading}
         tableOptions={{
           columns: ClassRequestColumns,
           data: data.docs || [],

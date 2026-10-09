@@ -74,7 +74,7 @@ const TransactionChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Giao dịch
+          Transactions
         </Typography>
         <TextField
           id='weekSelect'
@@ -110,8 +110,8 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
     const paymentAmount: number[] = []
 
     const series: ApexCharts.ApexOptions['series'] = [
-      { name: 'Ghi tăng', color: '#2DCE89', data: paymentAmount },
-      { name: 'Ghi giảm', color: '#F56767', data: payoutAmount }
+      { name: 'Top Up', color: '#2DCE89', data: paymentAmount },
+      { name: 'Deduct', color: '#F56767', data: payoutAmount }
     ]
 
     data.forEach((date) => {

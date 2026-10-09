@@ -41,21 +41,21 @@ const FeedbackDetailDialog = ({ open, onClose, feedback }: FeedbackDetailDialogP
               />
             </Box>
             <Box display='flex' flexDirection='column' justifyContent='center' gap={1} flexGrow='1'>
-              <Field label='Tên học viên' content={feedback.learner.name} />
+              <Field label='Learner Name' content={feedback.learner.name} />
               <Field label='Email' content={feedback.learner.email} />
-              <Field label='Ngày sinh' content={new Date(feedback.learner.dateOfBirth).toLocaleDateString()} />
-              <Field label='Số điện thoại' content={feedback.learner.phone} />
+              <Field label='Date of birth' content={new Date(feedback.learner.dateOfBirth).toLocaleDateString()} />
+              <Field label='Phone number' content={feedback.learner.phone} />
             </Box>
           </Box>
           <Box display='flex' gap={1} marginTop='1.25rem'>
             <Typography variant='subtitle1' fontWeight={500} marginBottom='0.5rem'>
-              Sao đánh giá
+              Rating Stars
             </Typography>
             <Rating defaultValue={feedback.rate} precision={0.5} readOnly />
           </Box>
           <Box marginTop='1.25rem'>
             <Typography variant='subtitle1' fontWeight={500} marginBottom='0.5rem'>
-              Đánh giá
+              Feedback
             </Typography>
             <Typography variant='subtitle1' fontWeight={400} fontSize='14px'>
               {feedback.comment}

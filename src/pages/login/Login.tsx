@@ -11,7 +11,7 @@ export default function Login() {
   const { userTokenPayload } = useAuth()
 
   useEffect(() => {
-    document.title = 'Đăng nhập'
+    document.title = 'Sign In'
   }, [])
 
   if (userTokenPayload) {
@@ -27,8 +27,8 @@ export default function Login() {
           </Grid>
           <Grid item xs={12} lg={6} height='100%'>
             <StyledBox>
-              <Heading>Đăng nhập</Heading>
-              <SubHeading>Hãy nhập thông tin tài khoản để truy cập vào hệ thống.</SubHeading>
+              <Heading>Sign In</Heading>
+              <SubHeading>Please enter your account details to access the system.</SubHeading>
               <LoginForm />
             </StyledBox>
           </Grid>

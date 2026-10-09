@@ -75,7 +75,7 @@ const ViewGardenDetail = () => {
   }, [gardenId, getGardenById])
 
   if (!gardenId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin vườn'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('garden information'))
     navigate(protectedRoute.gardenList.path, { replace: true })
     return
   }
@@ -89,23 +89,23 @@ const ViewGardenDetail = () => {
       <TitleWrapper>
         <div>
           <Typography variant='h5' fontSize={34} fontWeight={700}>
-            Thông tin nhà vườn
+            Garden Details
           </Typography>
           <Breadcrumbs items={breadcrumbsItems} />
         </div>
         <div style={{ display: 'flex' }}>
           <Button color='warning' onClick={handleUpdateButton} sx={{ marginRight: '24px' }}>
-            Cập nhật
+            Update
           </Button>
           {userTokenPayload && userTokenPayload.role === UserRole.STAFF && (
             <>
               {data?.status === GardenStatus.ACTIVE ? (
                 <Button color='error' onClick={handleOpenDeactivateDialog}>
-                  Vô hiệu hóa
+                  Inactive
                 </Button>
               ) : (
                 <Button color='secondary' onClick={handleOpenActivateDialog}>
-                  Kích hoạt
+                  Activate
                 </Button>
               )}
             </>
@@ -115,7 +115,7 @@ const ViewGardenDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin nhà vườn
+            Garden Details
           </Typography>
           <Line theme={theme} />
         </div>
@@ -123,7 +123,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}>
             <Box sx={{ display: 'flex' }}>
               <Typography fontWeight={500} width={'180px'}>
-                Tên nhà vườn:
+                Garden Name:
               </Typography>
               {data.name}
             </Box>
@@ -131,7 +131,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}>
             <Box sx={{ display: 'flex' }}>
               <Typography fontWeight={500} width={'180px'}>
-                Địa chỉ:
+                Address:
               </Typography>
               {data.address}
             </Box>
@@ -139,7 +139,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Typography fontWeight={500} width={'180px'}>
-                Mô tả:
+                Description:
               </Typography>
               {data.description}
             </Box>
@@ -147,7 +147,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}>
             <Box sx={{ display: 'flex' }}>
               <Typography fontWeight={500} width={'180px'}>
-                Số lớp học tối đa:
+                Max classes:
               </Typography>
               {data.maxClass}
             </Box>
@@ -155,7 +155,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}>
             <Box sx={{ display: 'flex' }}>
               <Typography fontWeight={500} width={'180px'}>
-                Người quản lý:
+                Manager:
               </Typography>
               {data.gardenManager.map((item) => item.name).join(', ')}
               {userTokenPayload && userTokenPayload.role === UserRole.STAFF ? (
@@ -169,7 +169,7 @@ const ViewGardenDetail = () => {
                     fontWeight={500}
                     sx={{}}
                   >
-                    Thay đổi quản lý vườn
+                    Change Garden Manager
                   </MuiLink>
                   <ArrowForward />
                 </Box>
@@ -179,7 +179,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}>
             <Box sx={{ display: 'flex' }}>
               <Typography fontWeight={500} width={'180px'}>
-                Trạng thái:
+                Status:
               </Typography>
               <GardenStatusTag type={data.status} />
             </Box>
@@ -187,7 +187,7 @@ const ViewGardenDetail = () => {
           <Grid item xs={12}></Grid>
         </Grid>
         <Typography fontWeight={500} width={'180px'}>
-          Hình ảnh nhà vườn
+          Garden Images
         </Typography>
         <Carousel>
           {data?.images?.map((value, index) => (
@@ -207,7 +207,7 @@ const ViewGardenDetail = () => {
       <ButtonWrapper>
         {data.status === GardenStatus.ACTIVE ? (
           <Button onClick={() => navigate(protectedRoute.viewGardenTimesheet.path.replace(':id', gardenId))}>
-            Lịch
+            Schedule
           </Button>
         ) : null}
       </ButtonWrapper>

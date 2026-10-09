@@ -24,7 +24,7 @@ const DeactivateDialog = ({ open, gardenId, date, handleClose, onSuccess }: Dial
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật lịch nhà vườn'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Garden Schedule'))
       onSuccess()
     }
     handleClose()
@@ -42,11 +42,11 @@ const DeactivateDialog = ({ open, gardenId, date, handleClose, onSuccess }: Dial
       handleConfirm={() => handleDeactivate()}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận cập nhật lịch nhà vườn'
-      description={APP_MESSAGE.CONFIRM_ACTION('nghỉ ngày này')}
-      confirmButtonText='Xác nhận'
+      title='Confirm Garden Schedule Update'
+      description={APP_MESSAGE.CONFIRM_ACTION('off this day')}
+      confirmButtonText='Confirm'
       confirmButtonColor='error'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

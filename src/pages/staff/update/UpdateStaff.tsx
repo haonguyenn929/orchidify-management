@@ -31,7 +31,7 @@ export default function UpdateStaff() {
   }, [staffId, getStaffById])
 
   if (!staffId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin nhân viên'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('staff information'))
     navigate(protectedRoute.staffList.path, { replace: true })
     return
   }
@@ -53,7 +53,7 @@ export default function UpdateStaff() {
   return data ? (
     <Box sx={{ marginBottom: '20px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Cập nhật nhân viên
+        Update Staff
       </Typography>
       <Breadcrumbs items={items} />
       <UpdateStaffForm
@@ -64,7 +64,7 @@ export default function UpdateStaff() {
             notifyError(error.message)
             return
           }
-          notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật nhân viên'))
+          notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Staff'))
           navigate(protectedRoute.staffDetail.path.replace(':id', staffId), { replace: true })
         }}
       />

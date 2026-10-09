@@ -1,5 +1,6 @@
 import { Chip, SxProps, Theme } from '@mui/material'
 import { RecruitmentStatus } from '~/global/app-status'
+import { baseTagStyles } from './tag.styles'
 
 interface RecruitmentStatusTagProps {
   type: RecruitmentStatus
@@ -11,7 +12,7 @@ const RecruitmentStatusTag = ({ type }: RecruitmentStatusTagProps) => {
 
   switch (type) {
     case RecruitmentStatus.PENDING: {
-      label = 'Chờ duyệt'
+      label = 'Pending'
       styles = {
         backgroundColor: '#d4f7ff',
         '& .MuiChip-label': { color: '#5badd0' }
@@ -19,7 +20,7 @@ const RecruitmentStatusTag = ({ type }: RecruitmentStatusTagProps) => {
       break
     }
     case RecruitmentStatus.INTERVIEWING: {
-      label = 'Đang phỏng vấn'
+      label = 'Interviewing'
       styles = {
         backgroundColor: '#ffcf221f',
         '& .MuiChip-label': { color: '#ffcf22' }
@@ -27,7 +28,7 @@ const RecruitmentStatusTag = ({ type }: RecruitmentStatusTagProps) => {
       break
     }
     case RecruitmentStatus.SELECTED: {
-      label = 'Chấp nhận'
+      label = 'Accepted'
       styles = {
         backgroundColor: '#20c0171f',
         '& .MuiChip-label': { color: '#20c017' }
@@ -35,7 +36,7 @@ const RecruitmentStatusTag = ({ type }: RecruitmentStatusTagProps) => {
       break
     }
     case RecruitmentStatus.REJECTED: {
-      label = 'Từ chối'
+      label = 'Rejected'
       styles = {
         backgroundColor: '#f668681f',
         '& .MuiChip-label': { color: '#f66868' }
@@ -43,7 +44,7 @@ const RecruitmentStatusTag = ({ type }: RecruitmentStatusTagProps) => {
       break
     }
     case RecruitmentStatus.EXPIRED: {
-      label = 'Quá hạn'
+      label = 'Expired'
       styles = {
         backgroundColor: '#0000000a',
         '& .MuiChip-label': { color: '#0000007a' }
@@ -52,7 +53,7 @@ const RecruitmentStatusTag = ({ type }: RecruitmentStatusTagProps) => {
     }
   }
 
-  return <Chip label={label} sx={styles} />
+  return <Chip label={label} sx={[baseTagStyles, ...(Array.isArray(styles) ? styles : [styles])]} />
 }
 
 export default RecruitmentStatusTag

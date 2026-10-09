@@ -58,7 +58,7 @@ export const useInstructorApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('instructor list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -77,7 +77,7 @@ export const useInstructorApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('instructor information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -96,7 +96,7 @@ export const useInstructorApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Kích hoạt giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Activate Instructor') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -115,7 +115,7 @@ export const useInstructorApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('Vô hiệu hóa giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('Deactivate Instructor') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -133,7 +133,7 @@ export const useInstructorApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('thêm giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('add instructor') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -152,7 +152,7 @@ export const useInstructorApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.ACTION_FAILED('cập nhật giảng viên') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.ACTION_FAILED('update instructor') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

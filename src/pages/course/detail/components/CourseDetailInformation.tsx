@@ -43,7 +43,7 @@ const CourseDetailInformation = ({ course }: CourseDetailInformationProps) => {
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Thông tin khóa học
+          Course Details
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
@@ -56,21 +56,21 @@ const CourseDetailInformation = ({ course }: CourseDetailInformationProps) => {
           />
         </Box>
         <Box display='flex' flexDirection='column' gap={1} flexGrow='1'>
-          <Field label='Mã khóa học' content={course.code} />
-          <Field label='Tên khóa học' content={course.title} />
-          <Field label='Giảng viên' content={course.instructor.name} />
-          <Field label='Giá' content={formatCurrency(course.price)} />
-          <Field label='Cấp độ' content={formatCourseLevel(course.level)} />
-          <Field label='Thể loại' content={course.type.join(', ')} />
-          <Field label='Giới hạn học viên' content={course.learnerLimit.toString()} />
-          <Field label='Thời lượng' content={`${course.duration} tuần`} />
-          {course.rate !== undefined ? <Field label='Đánh giá' rate={course.rate} /> : null}
-          {course.status !== CourseStatus.ACTIVE ? <Field label='Trạng thái' statusTag={course.status} /> : null}
+          <Field label='Course Code' content={course.code} />
+          <Field label='Course Name' content={course.title} />
+          <Field label='Instructors' content={course.instructor.name} />
+          <Field label='Price' content={formatCurrency(course.price)} />
+          <Field label='Level' content={formatCourseLevel(course.level)} />
+          <Field label='Category' content={course.type.join(', ')} />
+          <Field label='Learner Limit' content={course.learnerLimit.toString()} />
+          <Field label='Duration' content={`${course.duration} weeks`} />
+          {course.rate !== undefined ? <Field label='Feedback' rate={course.rate} /> : null}
+          {course.status !== CourseStatus.ACTIVE ? <Field label='Status' statusTag={course.status} /> : null}
         </Box>
       </Box>
       <Box marginBottom='1.25rem'>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Mô tả
+          Description
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {course.description}
@@ -78,7 +78,7 @@ const CourseDetailInformation = ({ course }: CourseDetailInformationProps) => {
       </Box>
       <Box marginBottom='1.25rem'>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Dụng cụ cần thiết
+          Required Toolkits
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {course.gardenRequiredToolkits}
@@ -86,7 +86,7 @@ const CourseDetailInformation = ({ course }: CourseDetailInformationProps) => {
       </Box>
       <Box>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Hình ảnh khóa học
+          Course Images
         </Typography>
         <Carousel>
           {course.media.map((media) => (

@@ -14,8 +14,8 @@ type FormValues = {
 const validationSchema = z.object({
   name: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Tên quản lý vườn'))
-    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Tên quản lý vườn', 50))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Garden Manager Name'))
+    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Garden Manager Name', 50))
 })
 
 interface UpdateGardenManagerFormProps {
@@ -38,7 +38,7 @@ const UpdateGardenManagerForm = ({ gardenManager, onSubmit }: UpdateGardenManage
       <Paper sx={{ width: '100%', marginY: '40px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin quản lý vườn
+            Garden Manager Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -46,7 +46,7 @@ const UpdateGardenManagerForm = ({ gardenManager, onSubmit }: UpdateGardenManage
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
-              label='Tên quản lý vườn'
+              label='Garden Manager Name'
               fullWidth
               size='small'
             />
@@ -54,7 +54,7 @@ const UpdateGardenManagerForm = ({ gardenManager, onSubmit }: UpdateGardenManage
         </Grid>
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Lưu
+        Save
       </Button>
     </StyledForm>
   )

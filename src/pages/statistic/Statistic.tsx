@@ -14,7 +14,7 @@ const Statistic = () => {
   return (
     <>
       <Typography variant='h1' fontSize='2.125rem' fontWeight='700' marginBottom='1.25rem'>
-        Thống kê
+        Statistics
       </Typography>
       <Grid container columnSpacing='1.875rem' rowSpacing='1.25rem'>
         <Grid item xs={12} lg={6}>

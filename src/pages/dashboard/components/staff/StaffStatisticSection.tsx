@@ -58,7 +58,7 @@ const StaffStatisticSection = () => {
     <Grid container spacing='1.875rem' marginBottom='1.25rem'>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Khóa học'
+          title='Courses'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.CourseSum)?.data.quantity as number) || 0
           }
@@ -70,7 +70,7 @@ const StaffStatisticSection = () => {
       </Grid>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Học viên'
+          title='Learners'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.LearnerSum)?.data.quantity as number) || 0
           }
@@ -82,7 +82,7 @@ const StaffStatisticSection = () => {
       </Grid>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Giảng viên'
+          title='Instructors'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.InstructorSum)?.data.quantity as number) || 0
           }
@@ -94,7 +94,7 @@ const StaffStatisticSection = () => {
       </Grid>
       <Grid item xs={6} lg={3}>
         <StatisticCard
-          title='Combo khóa học'
+          title='Course Combos'
           value={
             (data.docs.find((item) => item.type === ReportTotalSummaryType.CourseComboSum)?.data.quantity as number) ||
             0

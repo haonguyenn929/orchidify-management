@@ -24,7 +24,7 @@ const SessionList = ({ sessions }: SessionListProps) => {
       aria-labelledby='session-list-subheader'
       subheader={
         <ListSubheader component='div' id='session-list-subheader' sx={{ fontSize: 16, lineHeight: 4 }}>
-          Danh sách nội dung buổi học
+          Session Content List
         </ListSubheader>
       }
     >

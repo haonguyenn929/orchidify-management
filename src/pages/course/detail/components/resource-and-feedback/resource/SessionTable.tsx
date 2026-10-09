@@ -13,7 +13,7 @@ const SessionTable = ({ sessions, courseId }: SessionTableProps) => {
   const navigate = useNavigate()
   return (
     <Table
-      title='Danh sách nội dung buổi học'
+      title='Session Content List'
       tableOptions={{
         columns: sessionColumns,
         data: sessions || [],

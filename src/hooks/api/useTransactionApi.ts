@@ -52,7 +52,7 @@ export const useTransactionApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách giao dịch') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('transaction list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -71,7 +71,7 @@ export const useTransactionApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin giao dịch') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('transaction information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

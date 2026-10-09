@@ -20,7 +20,7 @@ const ApproveRequestDialog = ({ payoutRequestId, open, handleClose, onSuccess }:
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Chấp nhận yêu cầu'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Approve Request'))
       onSuccess()
     }
     handleClose()
@@ -37,11 +37,11 @@ const ApproveRequestDialog = ({ payoutRequestId, open, handleClose, onSuccess }:
       handleConfirm={() => handleApprove(payoutRequestId)}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận chấp nhận yêu cầu'
-      description={APP_MESSAGE.CONFIRM_ACTION('chấp nhận yêu cầu này')}
-      confirmButtonText='Chấp nhận'
+      title='Confirm Approve Request'
+      description={APP_MESSAGE.CONFIRM_ACTION('approve this request')}
+      confirmButtonText='Accepted'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

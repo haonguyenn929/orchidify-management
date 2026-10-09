@@ -6,14 +6,14 @@ import { ClassStatus } from '~/global/app-status'
 export default function ViewClassList() {
   return (
     <>
-      <PageHeader title='Lớp học' />
+      <PageHeader title='Classes' />
       <CustomTabs
         name='courseList'
         items={[
-          { label: 'Công khai', content: <ClassTable statusFilter={ClassStatus.PUBLISHED} /> },
-          { label: 'Đang diễn ra', content: <ClassTable statusFilter={ClassStatus.IN_PROGRESS} /> },
-          { label: 'Đã kết thúc', content: <ClassTable statusFilter={ClassStatus.COMPLETED} /> },
-          { label: 'Tất cả', content: <ClassTable /> }
+          { label: 'Published', content: <ClassTable statusFilter={ClassStatus.PUBLISHED} /> },
+          { label: 'In Progress', content: <ClassTable statusFilter={ClassStatus.IN_PROGRESS} /> },
+          { label: 'Completed', content: <ClassTable statusFilter={ClassStatus.COMPLETED} /> },
+          { label: 'All', content: <ClassTable /> }
         ]}
       />
     </>

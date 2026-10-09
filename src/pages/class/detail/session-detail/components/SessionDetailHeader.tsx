@@ -15,7 +15,7 @@ const SessionDetailHeader = ({ id }: SessionDetailHeaderProps) => {
     protectedRoute.classSessionDetail
   ]
 
-  return <PageHeader title='Chi tiết buổi học' breadcrumbsItems={breadcrumbsItems} />
+  return <PageHeader title='Session Details' breadcrumbsItems={breadcrumbsItems} />
 }
 
 export default SessionDetailHeader

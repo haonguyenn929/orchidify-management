@@ -1,5 +1,6 @@
 import { Chip, SxProps, Theme } from '@mui/material'
 import { ClassStatus } from '~/global/app-status'
+import { baseTagStyles } from './tag.styles'
 
 interface ClassStatusTagProps {
   type: ClassStatus
@@ -11,7 +12,7 @@ const ClassStatusTag = ({ type }: ClassStatusTagProps) => {
 
   switch (type) {
     case ClassStatus.PUBLISHED: {
-      label = 'Công khai'
+      label = 'Published'
       styles = {
         backgroundColor: '#ffcf221f',
         '& .MuiChip-label': { color: '#ffcf22' }
@@ -19,7 +20,7 @@ const ClassStatusTag = ({ type }: ClassStatusTagProps) => {
       break
     }
     case ClassStatus.IN_PROGRESS: {
-      label = 'Đang diễn ra'
+      label = 'In Progress'
       styles = {
         backgroundColor: '#20c0171f',
         '& .MuiChip-label': { color: '#20c017' }
@@ -27,7 +28,7 @@ const ClassStatusTag = ({ type }: ClassStatusTagProps) => {
       break
     }
     case ClassStatus.COMPLETED: {
-      label = 'Đã kết thúc'
+      label = 'Completed'
       styles = {
         backgroundColor: '#f668681f',
         '& .MuiChip-label': { color: '#f66868' }
@@ -35,16 +36,22 @@ const ClassStatusTag = ({ type }: ClassStatusTagProps) => {
       break
     }
     case ClassStatus.CANCELED: {
-      label = 'Đã hủy'
+      label = 'Canceled'
       styles = {
-        backgroundColor: 'transparent',
-        '& .MuiChip-label': { color: '#0000007a', textDecoration: 'line-through' }
+        backgroundColor: '#7575751f',
+        '& .MuiChip-label': { color: '#757575' }
       }
       break
     }
   }
 
-  return <Chip label={label} variant={type === ClassStatus.CANCELED ? 'outlined' : 'filled'} sx={styles} />
+  return (
+    <Chip
+      label={label}
+      variant='filled'
+      sx={[baseTagStyles, ...(Array.isArray(styles) ? styles : [styles])]}
+    />
+  )
 }
 
 export default ClassStatusTag

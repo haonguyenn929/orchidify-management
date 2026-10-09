@@ -27,9 +27,9 @@ const defaultFormValues: FormValues = {
 const validationSchema = z.object({
   role: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Chức vụ'))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Role'))
     .refine((value) => UserRole[value as keyof typeof UserRole], {
-      message: APP_MESSAGE.INVALID_VALUE(['Nhân viên', 'Quản lí vườn'])
+      message: APP_MESSAGE.INVALID_VALUE(['Staff', 'Garden Managers'])
     }),
   email: z
     .string()
@@ -38,8 +38,8 @@ const validationSchema = z.object({
     .email(APP_MESSAGE.WRONG_EMAIL_FORMAT),
   password: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Mật khẩu'))
-    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Mật khẩu', 50))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Password'))
+    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Password', 50))
 })
 
 const LoginForm = () => {
@@ -77,12 +77,12 @@ const LoginForm = () => {
     <StyledForm onSubmit={onSubmit}>
       <ControlledSelect
         controller={{ name: 'role', control: control }}
-        label='Chức vụ'
+        label='Role'
         labelId='role-select-label'
-        placeholder='Chọn chức vụ'
+        placeholder='Select Role'
         items={[
-          { name: 'Nhân viên', value: UserRole.STAFF },
-          { name: 'Quản lí vườn', value: UserRole.GARDEN_MANAGER }
+          { name: 'Staff', value: UserRole.STAFF },
+          { name: 'Garden Managers', value: UserRole.GARDEN_MANAGER }
         ]}
         fullWidth
         sx={{ marginBottom: '0.7rem' }}
@@ -90,7 +90,7 @@ const LoginForm = () => {
       <ControlledOutlinedInput
         controller={{ name: 'email', control: control }}
         label='Email'
-        placeholder='Nhập địa chỉ email'
+        placeholder='Enter email address'
         fullWidth
         sx={{ marginBottom: '0.7rem' }}
       />
@@ -109,13 +109,13 @@ const LoginForm = () => {
             </IconButton>
           </InputAdornment>
         }
-        label='Mật khẩu'
-        placeholder='Nhập mật khẩu'
+        label='Password'
+        placeholder='Enter password'
         fullWidth
         sx={{ marginBottom: '0.7rem' }}
       />
       <Button disabled={isSubmitting} size='large' type='submit' fullWidth sx={{ marginTop: '0.7rem' }}>
-        Đăng nhập
+        Sign In
       </Button>
     </StyledForm>
   )

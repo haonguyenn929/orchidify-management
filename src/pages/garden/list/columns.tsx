@@ -6,17 +6,17 @@ import { UserStatus } from '~/global/app-status'
 export const GardenColumns: MRT_ColumnDef<Garden>[] = [
   {
     accessorKey: 'name',
-    header: 'Tên vườn',
+    header: 'Garden Name',
     size: 150
   },
   {
     accessorKey: 'address',
-    header: 'Địa chỉ',
+    header: 'Address',
     size: 200
   },
   {
     accessorKey: 'maxClass',
-    header: 'Số lớp học tối đa',
+    header: 'Max classes',
     size: 200,
     enableColumnFilter: false,
     muiTableHeadCellProps: {
@@ -28,13 +28,13 @@ export const GardenColumns: MRT_ColumnDef<Garden>[] = [
   },
   {
     accessorFn: (row) => row.gardenManager?.[0]?.name || '',
-    header: 'Người quản lý',
+    header: 'Manager',
     size: 300,
     enableColumnFilter: false
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 150,
     Cell: ({ cell }) => {
       const type = cell.getValue() as UserStatus
@@ -42,8 +42,8 @@ export const GardenColumns: MRT_ColumnDef<Garden>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Hoạt động', value: UserStatus.ACTIVE },
-      { label: 'Vô hiệu hóa', value: UserStatus.INACTIVE }
+      { label: 'Active', value: UserStatus.ACTIVE },
+      { label: 'Inactive', value: UserStatus.INACTIVE }
     ]
   }
 ]

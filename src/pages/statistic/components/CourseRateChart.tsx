@@ -64,7 +64,7 @@ const CourseRateChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Đánh giá khóa học
+          Course Feedback
         </Typography>
       </Box>
       <ChartDisplay data={chartData.docs} />

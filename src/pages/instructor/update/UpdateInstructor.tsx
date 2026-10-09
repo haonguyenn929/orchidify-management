@@ -31,7 +31,7 @@ const UpdateInstructor = () => {
   }, [instructorId, getInstructorById])
 
   if (!instructorId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin giảng viên'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('instructor information'))
     navigate(protectedRoute.gardenManagerList.path, { replace: true })
     return
   }
@@ -53,7 +53,7 @@ const UpdateInstructor = () => {
   return data ? (
     <Box sx={{ marginBottom: '20px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Cập nhật giảng viên
+        Update Instructor
       </Typography>
       <Breadcrumbs items={items} />
       <UpdateInstructorForm
@@ -64,7 +64,7 @@ const UpdateInstructor = () => {
             notifyError(error.message)
             return
           }
-          notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật giảng viên'))
+          notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Instructor'))
           navigate(protectedRoute.instructorDetail.path.replace(':id', instructorId), { replace: true })
         }}
       />

@@ -64,7 +64,7 @@ const ClassRateChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Đánh giá lớp học
+          Class Feedback
         </Typography>
       </Box>
       <ChartDisplay data={chartData.docs} />

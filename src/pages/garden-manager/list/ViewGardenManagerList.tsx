@@ -36,10 +36,12 @@ const ViewGardenManagerList = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: gardenManager, error: apiError } = await getAllGardenManagers(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -64,6 +66,7 @@ const ViewGardenManagerList = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllGardenManagers, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -75,7 +78,7 @@ const ViewGardenManagerList = () => {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Quản lý vườn
+          Garden Managers
         </Typography>
         <div style={{ display: 'flex' }}>
           <Button
@@ -86,12 +89,13 @@ const ViewGardenManagerList = () => {
             sx={{ marginRight: '24px' }}
             endIcon={<AddIcon />}
           >
-            Thêm
+            Add
           </Button>
         </div>
       </TitleWrapper>
       <Table
-        title='Danh sách quản lý vườn'
+        title='Garden Manager List'
+        isLoading={isLoading}
         tableOptions={{
           columns: GardenManagerColumns,
           data: data.docs || [],

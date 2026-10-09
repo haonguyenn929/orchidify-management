@@ -9,7 +9,7 @@ export default function AddGardenManager() {
     <>
       <Box sx={{ marginBottom: '40px' }}>
         <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-          Thêm nhà vườn
+          Add Garden
         </Typography>
         <Breadcrumbs items={items} />
         <AddGardenForm />

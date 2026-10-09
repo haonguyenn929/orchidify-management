@@ -44,7 +44,7 @@ export const useCourseApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách khóa học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('course list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -63,7 +63,7 @@ export const useCourseApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin khóa học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('course information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -82,7 +82,7 @@ export const useCourseApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('chi tiết buổi học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('session details') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -101,7 +101,7 @@ export const useCourseApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('chi tiết bài tập') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('assignment details') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

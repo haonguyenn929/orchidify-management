@@ -37,20 +37,20 @@ const ComboInformation = ({ comboDetail }: ComboInformationProps) => {
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Thông tin Combo khóa học
+          Course Combo Information
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
       <Box display='flex' gap='1rem' marginBottom='1.25rem'>
         <Box display='flex' flexDirection='column' gap={1} flexGrow='1'>
-          <Field label='Tên Combo' content={comboDetail.title} />
-          <Field label='Giảng viên' content={comboDetail.instructor.name} />
-          <Field label='Giảm giá' content={`${comboDetail.discount}%`} />
+          <Field label='Combo Name' content={comboDetail.title} />
+          <Field label='Instructors' content={comboDetail.instructor.name} />
+          <Field label='Discount' content={`${comboDetail.discount}%`} />
         </Box>
       </Box>
       <Box>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Mô tả Combo khóa học
+          Description Course Combos
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {comboDetail.description}

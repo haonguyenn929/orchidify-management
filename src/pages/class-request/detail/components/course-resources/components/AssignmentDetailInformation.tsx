@@ -22,13 +22,13 @@ const AssignmentDetailInformation = ({ assignment }: { assignment: AssignmentDto
       <Box display='flex' gap='1rem' marginBottom='1.25rem'>
         <Box display='flex' flexDirection='column' justifyContent='space-between' flexGrow='1'>
           <Typography variant='subtitle1' fontWeight={600}>
-            Bài tập: {title}
+            Assignments: {title}
           </Typography>
         </Box>
       </Box>
       <Box marginBottom='1.25rem'>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Mô tả
+          Description
         </Typography>
         <Typography variant='subtitle1' fontWeight={400}>
           {description}
@@ -36,7 +36,7 @@ const AssignmentDetailInformation = ({ assignment }: { assignment: AssignmentDto
       </Box>
       <Box>
         <Typography variant='subtitle1' fontWeight={600} marginBottom='0.5rem'>
-          Tài liệu
+          Documents
         </Typography>
         <Carousel>
           {attachments.map((value, index) => (

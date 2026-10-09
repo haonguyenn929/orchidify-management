@@ -27,9 +27,11 @@ const StaffTable = () => {
     nextPage: null
   })
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: staffs, error: apiError } = await getAllStaffs(
         1,
         5,
@@ -54,6 +56,7 @@ const StaffTable = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllStaffs])
 
@@ -72,7 +75,7 @@ const StaffTable = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Nhân viên
+          Staff
         </Typography>
         <Typography
           variant='caption'
@@ -81,10 +84,10 @@ const StaffTable = () => {
           to={protectedRoute.staffList.path}
           sx={{ textDecoration: 'none' }}
         >
-          Xem tất cả
+          View all
         </Typography>
       </Box>
-      <TableDisplay data={data.docs} />
+      <TableDisplay data={data.docs} isLoading={isLoading} />
     </Paper>
   )
 }
@@ -93,14 +96,15 @@ export default StaffTable
 
 interface TableDisplayProps {
   data: Staff[]
+  isLoading?: boolean
 }
 
-const TableDisplay = ({ data }: TableDisplayProps) => {
+const TableDisplay = ({ data, isLoading }: TableDisplayProps) => {
   const navigate = useNavigate()
   const staffColumns: MRT_ColumnDef<Staff>[] = [
     {
       accessorKey: 'staffCode',
-      header: 'Mã nhân viên',
+      header: 'Staff ID',
       size: 100,
       Cell: ({ cell }) => {
         return (
@@ -120,7 +124,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
     },
     {
       accessorKey: 'name',
-      header: 'Tên nhân viên',
+      header: 'Staff Name',
       size: 150,
       Cell: ({ cell }) => {
         return (
@@ -161,6 +165,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
 
   return (
     <Table
+      isLoading={isLoading}
       tableOptions={{
         columns: staffColumns,
         data: data || [],

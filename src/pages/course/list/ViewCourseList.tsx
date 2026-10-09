@@ -4,7 +4,7 @@ import CourseTable from './components/CourseTable'
 const ViewCourseList = () => {
   return (
     <>
-      <PageHeader title='Khóa học' />
+      <PageHeader title='Courses' />
       <CourseTable />
     </>
   )

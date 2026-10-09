@@ -27,9 +27,11 @@ const InterviewingRecruitmentChart = () => {
     nextPage: null
   })
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     ;(async () => {
+      setIsLoading(true)
       const { data: recruitmentList, error: apiError } = await getAllRecruitments(
         1,
         5,
@@ -54,6 +56,7 @@ const InterviewingRecruitmentChart = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllRecruitments])
 
@@ -72,7 +75,7 @@ const InterviewingRecruitmentChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Đơn tuyển đang phỏng vấn
+          Interviewing Recruitments
         </Typography>
         <Typography
           variant='caption'
@@ -81,10 +84,10 @@ const InterviewingRecruitmentChart = () => {
           to={protectedRoute.recruitmentList.path}
           sx={{ textDecoration: 'none' }}
         >
-          Xem tất cả
+          View all
         </Typography>
       </Box>
-      <TableDisplay data={data.docs} />
+      <TableDisplay data={data.docs} isLoading={isLoading} />
     </Paper>
   )
 }
@@ -93,14 +96,15 @@ export default InterviewingRecruitmentChart
 
 interface TableDisplayProps {
   data: RecruitmentListItemResponseDto[]
+  isLoading?: boolean
 }
 
-const TableDisplay = ({ data }: TableDisplayProps) => {
+const TableDisplay = ({ data, isLoading }: TableDisplayProps) => {
   const navigate = useNavigate()
   const recruitmentColumns: MRT_ColumnDef<RecruitmentListItemResponseDto>[] = [
     {
       accessorFn: (row) => row.applicationInfo.name,
-      header: 'Ứng viên',
+      header: 'Applicant',
       Cell: ({ cell }) => {
         return (
           <Typography
@@ -138,13 +142,13 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
     },
     {
       accessorFn: (row) => row.applicationInfo.phone,
-      header: 'Số điện thoại',
+      header: 'Phone number',
       size: 120,
       grow: false
     },
     {
       accessorKey: 'createdAt',
-      header: 'Thời gian tạo',
+      header: 'Created at',
       grow: false,
       size: 120,
       muiTableBodyCellProps: {
@@ -158,10 +162,10 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
         return (
           <>
             <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-              {new Date(date).toLocaleTimeString('vi-VN')}
+              {new Date(date).toLocaleTimeString('en-US')}
             </Typography>
             <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-              {new Date(date).toLocaleDateString('vi-VN')}
+              {new Date(date).toLocaleDateString('en-US')}
             </Typography>
           </>
         )
@@ -171,6 +175,7 @@ const TableDisplay = ({ data }: TableDisplayProps) => {
 
   return (
     <Table
+      isLoading={isLoading}
       tableOptions={{
         columns: recruitmentColumns,
         data: data || [],

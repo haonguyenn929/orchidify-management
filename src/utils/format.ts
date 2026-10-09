@@ -27,8 +27,8 @@ export function formatCurrencyDashboard(value: number, currency: string = 'VND',
   }
 
   const ranges = [
-    { limit: 1_000_000_000, label: ' Tỷ', divisor: 1_000_000_000 },
-    { limit: 1_000_000, label: ' Tr', divisor: 1_000_000 },
+    { limit: 1_000_000_000, label: ' B', divisor: 1_000_000_000 },
+    { limit: 1_000_000, label: ' M', divisor: 1_000_000 },
     { limit: 100_000, label: ' K', divisor: 1_000 }
   ]
 
@@ -52,24 +52,24 @@ export function formatCurrencyDashboard(value: number, currency: string = 'VND',
 export function formatCourseLevel(level: CourseLevel): string {
   switch (level) {
     case CourseLevel.BASIC:
-      return 'Cơ bản'
+      return 'Basic'
     case CourseLevel.INTERMEDIATE:
-      return 'Trung bình'
+      return 'Intermediate'
     case CourseLevel.ADVANCED:
-      return 'Nâng cao'
+      return 'Advanced'
     default:
-      return 'Chưa xác định'
+      return 'Unknown'
   }
 }
 
 export function formatRequestType(type: RequestType): string {
   switch (type) {
     case RequestType.PUBLISH_CLASS:
-      return 'Mở lớp học'
+      return 'Open Class'
     case RequestType.CANCEL_CLASS:
-      return 'Hủy lớp học'
+      return 'Cancel Class'
     default:
-      return 'Chưa xác định'
+      return 'Unknown'
   }
 }
 

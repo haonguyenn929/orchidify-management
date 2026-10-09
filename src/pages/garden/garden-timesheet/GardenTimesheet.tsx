@@ -105,7 +105,7 @@ const GardenTimesheet = () => {
               ...Object.keys(value).map((slotNumber) => ({
                 start: value[slotNumber].start,
                 end: value[slotNumber].end,
-                title: `Tiết ${slotNumber} (${value[slotNumber].classQuantity})`,
+                title: `Slot ${slotNumber} (${value[slotNumber].classQuantity})`,
                 display: 'block',
                 classId: value[slotNumber].classId,
                 slotId: value[slotNumber]._id
@@ -118,7 +118,7 @@ const GardenTimesheet = () => {
               ? {
                   start: slot.start,
                   end: slot.end,
-                  title: slot.metadata ? `${slot.metadata.code} - ${slot.metadata.title}` : 'Lớp học',
+                  title: slot.metadata ? `${slot.metadata.code} - ${slot.metadata.title}` : 'Classes',
                   display: 'block',
                   backgroundColor: '#0ea5e919',
                   classNames: userTokenPayload?.role === UserRole.GARDEN_MANAGER ? 'clickable-event' : undefined,
@@ -160,7 +160,7 @@ const GardenTimesheet = () => {
   }
 
   if (!gardenId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin lịch nhà vườn'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('garden schedule information'))
     navigate(protectedRoute.gardenList.path, { replace: true })
     return
   }
@@ -179,7 +179,7 @@ const GardenTimesheet = () => {
         <Paper sx={{ width: '100%', marginY: '20px', padding: '24px' }}>
           <Box display='flex' alignItems='center' marginBottom='20px'>
             <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-              Thông tin nhà vườn
+              Garden Details
             </Typography>
             <Divider sx={{ flexGrow: 1 }} />
           </Box>
@@ -187,7 +187,7 @@ const GardenTimesheet = () => {
             <Grid item xs={12}>
               <Box sx={{ display: 'flex' }}>
                 <Typography fontWeight={500} width={'180px'}>
-                  Tên nhà vườn:
+                  Garden Name:
                 </Typography>
                 {data.name}
               </Box>
@@ -195,7 +195,7 @@ const GardenTimesheet = () => {
             <Grid item xs={12}>
               <Box sx={{ display: 'flex' }}>
                 <Typography fontWeight={500} width={'180px'}>
-                  Địa chỉ:
+                  Address:
                 </Typography>
                 {data.address}
               </Box>

@@ -28,7 +28,7 @@ export const useSettingApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách thể loại khóa học') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('course categories list') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 

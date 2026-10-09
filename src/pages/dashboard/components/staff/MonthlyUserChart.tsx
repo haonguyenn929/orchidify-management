@@ -64,7 +64,7 @@ const MonthlyUserChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Số người dùng mỗi tháng
+          Monthly Users
         </Typography>
         <Select
           size='small'
@@ -99,8 +99,8 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
     const instructorQuantities: number[] = []
 
     const series: ApexCharts.ApexOptions['series'] = [
-      { name: 'Học viên', color: '#2EC4B6', data: leanerQuantities },
-      { name: 'Giảng viên', color: '#F56767', data: instructorQuantities }
+      { name: 'Learners', color: '#2EC4B6', data: leanerQuantities },
+      { name: 'Instructors', color: '#F56767', data: instructorQuantities }
     ]
 
     data.forEach((month) => {

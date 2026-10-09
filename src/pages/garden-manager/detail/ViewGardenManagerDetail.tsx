@@ -79,21 +79,21 @@ const ViewGardenManagerDetail = () => {
       <TitleWrapper>
         <div>
           <Typography variant='h5' fontSize={34} fontWeight={700}>
-            Thông tin quản lý vườn
+            Garden Manager Details
           </Typography>
           <Breadcrumbs items={breadcrumbsItems} />
         </div>
         <div style={{ display: 'flex' }}>
           <Button color='warning' onClick={handleUpdateButton} sx={{ marginRight: '24px' }}>
-            Cập nhật
+            Update
           </Button>
           {data?.status === UserStatus.ACTIVE ? (
             <Button color='error' onClick={handleOpenDeactivateDialog}>
-              Vô hiệu hóa
+              Inactive
             </Button>
           ) : (
             <Button color='secondary' onClick={handleOpenActivateDialog}>
-              Kích hoạt
+              Activate
             </Button>
           )}
         </div>
@@ -101,7 +101,7 @@ const ViewGardenManagerDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin hệ thống
+            System Information
           </Typography>
 
           <Line theme={theme} />
@@ -113,7 +113,7 @@ const ViewGardenManagerDetail = () => {
               {data?.name}
             </Typography>
             <Typography variant='h6' fontSize={14} fontWeight={500} color={theme.label.secondary}>
-              Quản lý vườn
+              Garden Managers
             </Typography>
           </div>
         </Avatar>
@@ -121,20 +121,20 @@ const ViewGardenManagerDetail = () => {
       <ContentWrapper theme={theme}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Typography variant='h5' fontSize={24} fontWeight={700}>
-            Thông tin cá nhân
+            Personal Information
           </Typography>
           <Line theme={theme} />
         </div>
         <Box>
-          <Field label='Tên nhà vườn' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
+          <Field label='Garden Name' content={<ContentText>{data?.name || ''}</ContentText>} theme={theme} />
           <Field label='Email' content={<ContentText>{data?.email || ''}</ContentText>} theme={theme} />
           <Field
-            label='Nhà vườn'
+            label='Gardens'
             content={<ContentText>{map(data?.gardens || [], (garden) => garden.name).join(', ') || ''}</ContentText>}
             theme={theme}
           />
           <Field
-            label='Trạng thái'
+            label='Status'
             content={data ? <UserStatusTag type={UserStatus[data.status]} /> : null}
             theme={theme}
           />

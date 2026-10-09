@@ -22,10 +22,10 @@ const Header = ({ gardenId, onUpdateButtonClick }: HeaderProps) => {
 
   return (
     <Box display='flex' justifyContent='space-between' alignItems='center'>
-      <PageHeader title='Lịch' breadcrumbsItems={breadcrumbsItems} />
+      <PageHeader title='Schedule' breadcrumbsItems={breadcrumbsItems} />
       {userTokenPayload?.role === UserRole.STAFF ? (
         <Button color='warning' onClick={onUpdateButtonClick}>
-          Cập nhật
+          Update
         </Button>
       ) : null}
     </Box>

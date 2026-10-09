@@ -12,7 +12,7 @@ const ChildCourseTable = ({ childCourses }: ChildCourseTableProps) => {
   const navigate = useNavigate()
   return (
     <Table
-      title='Danh sách khóa học trong combo'
+      title='Courses in Combo List'
       tableOptions={{
         columns: childCourseColumns,
         data: childCourses || [],

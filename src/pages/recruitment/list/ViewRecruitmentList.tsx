@@ -34,10 +34,12 @@ export default function ViewRecruitmentList() {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: recruimentListData, error: apiError } = await getAllRecruitments(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -62,6 +64,7 @@ export default function ViewRecruitmentList() {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllRecruitments, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -73,11 +76,12 @@ export default function ViewRecruitmentList() {
     <>
       <Box display='flex' justifyContent='space-between'>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Đơn tuyển
+          Recruitments
         </Typography>
       </Box>
       <Table
-        title='Danh sách đơn tuyển'
+        title='Recruitment List'
+        isLoading={isLoading}
         tableOptions={{
           columns: RecruitmentColumns,
           data: data.docs || [],

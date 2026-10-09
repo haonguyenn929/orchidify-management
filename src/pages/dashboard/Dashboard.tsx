@@ -33,7 +33,7 @@ const AdminDashboard = ({ username }: DashboardProps) => {
   return (
     <>
       <Typography variant='h1' fontSize='2.125rem' fontWeight='700' marginBottom='1.25rem'>
-        Xin chào, {username}
+        Welcome, {username}
       </Typography>
       <AdminStatisticSection />
       <AdminChartSection />
@@ -45,7 +45,7 @@ const StaffDashboard = ({ username }: DashboardProps) => {
   return (
     <>
       <Typography variant='h1' fontSize='2.125rem' fontWeight='700' marginBottom='1.25rem'>
-        Xin chào, {username}
+        Welcome, {username}
       </Typography>
       <StaffStatisticSection />
       <StaffChartSection />
@@ -57,7 +57,7 @@ const GardenManagerDashboard = ({ username }: DashboardProps) => {
   return (
     <>
       <Typography variant='h1' fontSize='2.125rem' fontWeight='700' marginBottom='1.25rem'>
-        Xin chào, {username}
+        Welcome, {username}
       </Typography>
       <GardenManagerGardenInfoSection />
       <GardenManagerTimesheetSection />

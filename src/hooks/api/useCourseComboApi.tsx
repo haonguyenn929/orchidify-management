@@ -44,7 +44,7 @@ export const useCourseComboApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách combo khóa học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('course combo list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -63,7 +63,7 @@ export const useCourseComboApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('thông tin combo khóa học') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('course combo information') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

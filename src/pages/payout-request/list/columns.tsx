@@ -9,12 +9,14 @@ import { formatCurrency } from '~/utils/format'
 export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
   {
     accessorKey: 'createdBy.name',
-    header: 'Tên giảng viên',
+    header: 'Instructor Name',
+    size: 160,
+    grow: false,
     enableColumnFilter: false
   },
   {
     accessorKey: 'amount',
-    header: 'Số tiền',
+    header: 'Amount',
     size: 150,
     grow: false,
     enableColumnFilter: false,
@@ -25,7 +27,7 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
   },
   {
     accessorKey: 'description',
-    header: 'Mô tả yêu cầu',
+    header: 'Request Description',
     size: 250,
     enableColumnFilter: false,
     Cell: ({ cell }) => {
@@ -47,7 +49,7 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
   },
   {
     accessorKey: 'createdAt',
-    header: 'Thời gian tạo',
+    header: 'Created at',
     size: 150,
     muiTableBodyCellProps: {
       style: {
@@ -61,10 +63,10 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
       return (
         <>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleTimeString('vi-VN')}
+            {new Date(date).toLocaleTimeString('en-US')}
           </Typography>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleDateString('vi-VN')}
+            {new Date(date).toLocaleDateString('en-US')}
           </Typography>
         </>
       )
@@ -72,7 +74,7 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
   },
   {
     accessorKey: 'updatedAt',
-    header: 'Cập nhật cuối',
+    header: 'Last updated',
     size: 150,
     muiTableBodyCellProps: {
       style: {
@@ -86,10 +88,10 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
       return (
         <>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleTimeString('vi-VN')}
+            {new Date(date).toLocaleTimeString('en-US')}
           </Typography>
           <Typography variant='subtitle2' sx={{ fontWeight: 400 }}>
-            {new Date(date).toLocaleDateString('vi-VN')}
+            {new Date(date).toLocaleDateString('en-US')}
           </Typography>
         </>
       )
@@ -97,7 +99,7 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
   },
   {
     accessorKey: 'status',
-    header: 'Trạng thái',
+    header: 'Status',
     size: 130,
     grow: false,
     Cell: ({ row }) => {
@@ -106,16 +108,16 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Chờ duyệt', value: RequestStatus.PENDING },
-      { label: 'Chấp nhận', value: RequestStatus.APPROVED },
-      { label: 'Từ chối', value: RequestStatus.REJECTED },
-      { label: 'Hủy', value: RequestStatus.CANCELED },
-      { label: 'Hết hạn', value: RequestStatus.EXPIRED }
+      { label: 'Pending', value: RequestStatus.PENDING },
+      { label: 'Accepted', value: RequestStatus.APPROVED },
+      { label: 'Rejected', value: RequestStatus.REJECTED },
+      { label: 'Canceled', value: RequestStatus.CANCELED },
+      { label: 'Expired', value: RequestStatus.EXPIRED }
     ]
   },
   {
     accessorKey: 'hasMadePayout',
-    header: 'Đã thực hiện',
+    header: 'Fulfilled',
     size: 120,
     grow: false,
     muiTableHeadCellProps: { align: 'center' },
@@ -123,8 +125,8 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
     enableSorting: false,
     filterVariant: 'select',
     filterSelectOptions: [
-      { label: 'Đã thực hiện', value: true },
-      { label: 'Chưa chuyển', value: 'false' }
+      { label: 'Fulfilled', value: true },
+      { label: 'Not transferred', value: 'false' }
     ],
     Cell: ({ row }) => {
       return row.original.status === RequestStatus.APPROVED ? (
@@ -138,7 +140,7 @@ export const PayoutRequestColumns: MRT_ColumnDef<PayoutRequestListItemDto>[] = [
   },
   {
     accessorKey: 'rejectReason',
-    header: 'Lý do từ chối',
+    header: 'Rejection reason',
     enableColumnFilter: false,
     Cell: ({ cell }) => {
       const reason = cell.getValue() as string

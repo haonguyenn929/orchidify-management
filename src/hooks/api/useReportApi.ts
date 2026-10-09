@@ -26,7 +26,7 @@ export const useReportApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo tổng quan') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('overview report') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 
@@ -48,7 +48,7 @@ export const useReportApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số người dùng mỗi tháng') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('monthly users report') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -66,7 +66,7 @@ export const useReportApi = () => {
 
     return {
       data: null,
-      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('báo cáo số lượng lớp học theo trạng thái') } as ErrorResponseDto
+      error: { message: APP_MESSAGE.LOAD_DATA_FAILED('class count by status report') } as ErrorResponseDto
     }
   }, [callAppProtectedApi])
 

@@ -8,7 +8,7 @@ export default function AddStaff() {
   return (
     <Box sx={{ marginBottom: '20px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Thêm nhân viên
+        Add Staff
       </Typography>
       <Breadcrumbs items={items} />
       <AddStaffForm />

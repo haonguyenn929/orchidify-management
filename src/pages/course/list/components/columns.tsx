@@ -7,24 +7,24 @@ import { formatCourseLevel, formatCurrency } from '~/utils/format'
 export const courseColumns: MRT_ColumnDef<CourseListItemResponseDto>[] = [
   {
     accessorKey: 'code',
-    header: 'Mã khóa học',
+    header: 'Course Code',
     size: 150,
     grow: false
   },
   {
     accessorKey: 'title',
-    header: 'Tên khóa học'
+    header: 'Course Name'
   },
   {
     accessorKey: 'instructor.name',
-    size: 250,
+    size: 160,
     grow: false,
-    header: 'Giảng viên',
+    header: 'Instructors',
     enableColumnFilter: false
   },
   {
     accessorKey: 'price',
-    header: 'Giá',
+    header: 'Price',
     size: 100,
     grow: false,
     muiTableHeadCellProps: {
@@ -41,7 +41,7 @@ export const courseColumns: MRT_ColumnDef<CourseListItemResponseDto>[] = [
   },
   {
     accessorKey: 'level',
-    header: 'Cấp độ',
+    header: 'Level',
     size: 100,
     grow: false,
     Cell: ({ cell }) => {
@@ -66,16 +66,16 @@ export const courseColumns: MRT_ColumnDef<CourseListItemResponseDto>[] = [
     },
     filterVariant: 'multi-select',
     filterSelectOptions: [
-      { label: 'Cơ bản', value: CourseLevel.BASIC },
-      { label: 'Trung bình', value: CourseLevel.INTERMEDIATE },
-      { label: 'Nâng cao', value: CourseLevel.ADVANCED }
+      { label: 'Basic', value: CourseLevel.BASIC },
+      { label: 'Intermediate', value: CourseLevel.INTERMEDIATE },
+      { label: 'Advanced', value: CourseLevel.ADVANCED }
     ],
     enableSorting: false
   },
   {
     id: 'type',
     accessorKey: 'type',
-    header: 'Thể loại',
+    header: 'Category',
     size: 120,
     grow: false,
     filterVariant: 'select',
@@ -87,7 +87,7 @@ export const courseColumns: MRT_ColumnDef<CourseListItemResponseDto>[] = [
   },
   {
     accessorKey: 'learnerLimit',
-    header: 'Giới hạn học viên',
+    header: 'Learner Limit',
     size: 170,
     grow: false,
     muiTableHeadCellProps: {

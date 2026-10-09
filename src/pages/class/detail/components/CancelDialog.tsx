@@ -18,8 +18,8 @@ const defaultFormValues: FormValues = {
 const validationSchema = z.object({
   cancelReason: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Mô tả lý do hủy'))
-    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Mô tả lý do hủy', 500))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Cancellation reason description'))
+    .max(500, APP_MESSAGE.FIELD_TOO_LONG('Cancellation reason description', 500))
 })
 
 interface DialogProps {
@@ -45,7 +45,7 @@ const CancelDialog = ({ classId, open, handleClose, onSuccess }: DialogProps) =>
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Hủy lớp học'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cancel Class'))
       onSuccess()
     }
     handleClose()
@@ -61,18 +61,18 @@ const CancelDialog = ({ classId, open, handleClose, onSuccess }: DialogProps) =>
       onSubmit={handleSubmit(handleDeactivate)}
       handleCancel={handleCancel}
       isProcessing={isSubmitting}
-      title='Xác nhận hủy lớp học'
-      description='Lớp học này đã vi phạm quy định và bạn muốn hủy lớp học này? Hành động này không thể hoàn tác.'
-      confirmButtonText='Xác nhận'
+      title='Confirm Cancel Class'
+      description='This class violated regulations and you want to cancel it? This action cannot be undone.'
+      confirmButtonText='Confirm'
       confirmButtonColor='error'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       formContent={
         <ControlledOutlinedInput
           controller={{ name: 'cancelReason', control: control }}
           multiline
           minRows={7}
           maxRows={7}
-          label='Mô tả lý do hủy'
+          label='Cancellation reason description'
           fullWidth
           sx={{ marginTop: '0.5rem' }}
         />

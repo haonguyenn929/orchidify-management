@@ -14,8 +14,8 @@ type FormValues = {
 const validationSchema = z.object({
   name: z
     .string()
-    .min(1, APP_MESSAGE.REQUIRED_FIELD('Tên nhân viên'))
-    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Tên nhân viên', 50))
+    .min(1, APP_MESSAGE.REQUIRED_FIELD('Staff Name'))
+    .max(50, APP_MESSAGE.FIELD_TOO_LONG('Staff Name', 50))
 })
 
 interface UpdateStaffFormProps {
@@ -38,7 +38,7 @@ const UpdateStaffForm = ({ staff, onSubmit }: UpdateStaffFormProps) => {
       <Paper sx={{ width: '100%', marginY: '40px', padding: '24px' }}>
         <Box display='flex' alignItems='center' marginBottom='20px'>
           <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-            Thông tin nhân viên
+            Staff Details
           </Typography>
           <Divider sx={{ flexGrow: 1 }} />
         </Box>
@@ -46,7 +46,7 @@ const UpdateStaffForm = ({ staff, onSubmit }: UpdateStaffFormProps) => {
           <Grid item xs={12} lg={6}>
             <ControlledOutlinedInput
               controller={{ name: 'name', control: control }}
-              label='Tên nhân viên'
+              label='Staff Name'
               fullWidth
               size='small'
             />
@@ -54,7 +54,7 @@ const UpdateStaffForm = ({ staff, onSubmit }: UpdateStaffFormProps) => {
         </Grid>
       </Paper>
       <Button disabled={isSubmitting} type='submit'>
-        Lưu
+        Save
       </Button>
     </StyledForm>
   )

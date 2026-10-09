@@ -65,16 +65,16 @@ const Header = ({
 
   return (
     <Box display='flex' justifyContent='space-between' alignItems='center'>
-      <PageHeader title='Chi tiết lớp học' breadcrumbsItems={breadcrumbsItems} />
+      <PageHeader title='Class Details' breadcrumbsItems={breadcrumbsItems} />
       <Box display='flex' justifyContent='space-between' gap='1.5rem'>
         {classStatus === ClassStatus.IN_PROGRESS && dayjs().startOf('date') > endDate ? (
           <Button color='secondary' onClick={onCompleteButtonClick}>
-            Kết thúc
+            End
           </Button>
         ) : null}
         {classStatus === ClassStatus.PUBLISHED || classStatus === ClassStatus.IN_PROGRESS ? (
           <Button color='error' onClick={onCancelButtonClick}>
-            Hủy
+            Cancel
           </Button>
         ) : null}
       </Box>

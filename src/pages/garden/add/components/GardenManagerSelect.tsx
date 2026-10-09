@@ -79,9 +79,9 @@ const GardenManagerSelect = <TFieldValues extends FieldValues>({
   return (
     <ControlledSelect
       controller={controller}
-      label='Quản lý vườn'
+      label='Garden Managers'
       labelId='garden-manager-select-label'
-      placeholder='Chọn quản lý'
+      placeholder='Select Manager'
       items={gardenManagerOptions}
       fullWidth
       size='small'

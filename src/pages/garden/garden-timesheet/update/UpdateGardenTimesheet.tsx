@@ -65,7 +65,7 @@ const transformGardenTimesheetData = (data: GardenTimesheetItemResponseDto[]) =>
         start: value[slotNumber].start,
         end: value[slotNumber].end,
         status: value[slotNumber].status,
-        title: `Tiết ${slotNumber} (${value[slotNumber].classQuantity})`,
+        title: `Slot ${slotNumber} (${value[slotNumber].classQuantity})`,
         display: 'block',
         hasEvent: true
       }))
@@ -103,7 +103,7 @@ export default function UpdateGardenTimesheet() {
   }, [gardenId, getGardenById])
 
   if (!gardenId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin lịch nhà vườn'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('garden schedule information'))
     navigate(protectedRoute.gardenList.path, { replace: true })
     return
   }
@@ -160,7 +160,7 @@ export default function UpdateGardenTimesheet() {
       <GardenInformation garden={{ name: gardenData.name, address: gardenData.address }} />
       <Box height='1.25rem' marginBottom='0.5rem'>
         <Typography variant='caption'>
-          Lịch chỉ được cập nhật những ngày không có lớp học và phải cách ngày hiện tại ít nhất 7 ngày
+          Schedule can only be updated for days with no classes and must be at least 7 days from today
         </Typography>
       </Box>
       <GardenCalendar events={eventData} onDatesChange={handleDatesChange} onDateClick={handleDateClick} />

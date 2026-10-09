@@ -31,7 +31,7 @@ export default function UpdateGardenManager() {
   }, [gardenManagerId, getGardenManagerById])
 
   if (!gardenManagerId) {
-    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('thông tin quản lý vườn'))
+    notifyError(APP_MESSAGE.LOAD_DATA_FAILED('garden manager information'))
     navigate(protectedRoute.gardenManagerList.path, { replace: true })
     return
   }
@@ -53,7 +53,7 @@ export default function UpdateGardenManager() {
   return data ? (
     <Box sx={{ marginBottom: '20px' }}>
       <Typography variant='h1' sx={{ fontSize: '2rem', paddingBottom: '8px', fontWeight: 700 }}>
-        Cập nhật quản lý vườn
+        Update Garden Manager
       </Typography>
       <Breadcrumbs items={items} />
       <UpdateGardenManagerForm
@@ -64,7 +64,7 @@ export default function UpdateGardenManager() {
             notifyError(error.message)
             return
           }
-          notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Cập nhật quản lý vườn'))
+          notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Update Garden Manager'))
           navigate(protectedRoute.gardenManagerDetail.path.replace(':id', gardenManagerId), { replace: true })
         }}
       />

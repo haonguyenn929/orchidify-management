@@ -12,7 +12,7 @@ const GardenInformation = ({ garden }: GardenInformationProps) => {
     <Paper sx={{ width: '100%', marginY: '20px', padding: '24px' }}>
       <Box display='flex' alignItems='center' marginBottom='20px'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '10px' }}>
-          Thông tin nhà vườn
+          Garden Details
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
@@ -20,7 +20,7 @@ const GardenInformation = ({ garden }: GardenInformationProps) => {
         <Grid item xs={12}>
           <Box sx={{ display: 'flex' }}>
             <Typography fontWeight={500} width={'180px'}>
-              Tên nhà vườn:
+              Garden Name:
             </Typography>
             {garden.name}
           </Box>
@@ -28,7 +28,7 @@ const GardenInformation = ({ garden }: GardenInformationProps) => {
         <Grid item xs={12}>
           <Box sx={{ display: 'flex' }}>
             <Typography fontWeight={500} width={'180px'}>
-              Địa chỉ:
+              Address:
             </Typography>
             {garden.address}
           </Box>

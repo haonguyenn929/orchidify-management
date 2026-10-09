@@ -39,10 +39,12 @@ const ViewGardenList = () => {
   const [sorting, setSorting] = useState<MRT_SortingState>([])
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([])
   const [error, setError] = useState<ErrorResponseDto | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     // eslint-disable-next-line prettier/prettier
     (async () => {
+      setIsLoading(true)
       const { data: gardens, error: apiError } = await getAllGardens(
         pagination.pageIndex + 1,
         pagination.pageSize,
@@ -67,6 +69,7 @@ const ViewGardenList = () => {
         })
       }
       setError(apiError)
+      setIsLoading(false)
     })()
   }, [getAllGardens, pagination.pageIndex, pagination.pageSize, sorting, columnFilters])
 
@@ -78,7 +81,7 @@ const ViewGardenList = () => {
     <>
       <TitleWrapper>
         <Typography variant='h5' fontSize={34} fontWeight={700}>
-          Nhà vườn
+          Gardens
         </Typography>
         <div style={{ display: 'flex' }}>
           {userTokenPayload && userTokenPayload.role === UserRole.STAFF ? (
@@ -90,13 +93,14 @@ const ViewGardenList = () => {
               sx={{ marginRight: '24px' }}
               endIcon={<AddIcon />}
             >
-              Thêm
+              Add
             </Button>
           ) : null}
         </div>
       </TitleWrapper>
       <Table
-        title='Danh sách nhà vườn'
+        title='Garden List'
+        isLoading={isLoading}
         tableOptions={{
           columns: GardenColumns,
           data: data.docs || [],

@@ -45,7 +45,7 @@ export const useFeedbackApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách đánh giá') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('feedback list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]
@@ -82,7 +82,7 @@ export const useFeedbackApi = () => {
 
       return {
         data: null,
-        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('danh sách đánh giá') } as ErrorResponseDto
+        error: { message: APP_MESSAGE.LOAD_DATA_FAILED('feedback list') } as ErrorResponseDto
       }
     },
     [callAppProtectedApi]

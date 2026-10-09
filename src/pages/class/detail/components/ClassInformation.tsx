@@ -14,20 +14,20 @@ interface FieldProps {
 
 const Field: React.FC<FieldProps> = ({ label, content, weekDays = [], slotNumbers = [], statusTag }) => {
   const weekDayText = weekDays.length > 0 && {
-    [Weekday.MONDAY]: 'Thứ 2',
-    [Weekday.TUESDAY]: 'Thứ 3',
-    [Weekday.WEDNESDAY]: 'Thứ 4',
-    [Weekday.THURSDAY]: 'Thứ 5',
-    [Weekday.FRIDAY]: 'Thứ 6',
-    [Weekday.SATURDAY]: 'Thứ 7',
-    [Weekday.SUNDAY]: 'Chủ nhật'
+    [Weekday.MONDAY]: 'Monday',
+    [Weekday.TUESDAY]: 'Tuesday',
+    [Weekday.WEDNESDAY]: 'Wednesday',
+    [Weekday.THURSDAY]: 'Thursday',
+    [Weekday.FRIDAY]: 'Friday',
+    [Weekday.SATURDAY]: 'Saturday',
+    [Weekday.SUNDAY]: 'Sunday'
   }
 
   const slotNumberText = slotNumbers.length > 0 && {
-    [SlotNumber.ONE]: 'Tiết 1',
-    [SlotNumber.TWO]: 'Tiết 2',
-    [SlotNumber.THREE]: 'Tiết 3',
-    [SlotNumber.FOUR]: 'Tiết 4'
+    [SlotNumber.ONE]: 'Slot 1',
+    [SlotNumber.TWO]: 'Slot 2',
+    [SlotNumber.THREE]: 'Slot 3',
+    [SlotNumber.FOUR]: 'Slot 4'
   }
 
   return (
@@ -64,34 +64,34 @@ const ClassInformation = ({ classDetail }: ClassInformationProps) => {
     <Paper sx={{ width: '100%', marginTop: '1.25rem', padding: '1.5rem' }}>
       <Box display='flex' alignItems='center' marginBottom='1.25rem'>
         <Typography variant='h2' sx={{ fontSize: '1.5rem', fontWeight: 700, paddingRight: '0.75rem' }}>
-          Thông tin lớp học
+          Class Information
         </Typography>
         <Divider sx={{ flexGrow: 1 }} />
       </Box>
       <Grid container>
         <Grid item xs={12}>
-          <Field label='Mã lớp học' content={classDetail.code} />
+          <Field label='Class Code' content={classDetail.code} />
         </Grid>
         <Grid item xs={12}>
-          <Field label='Số lượng học viên' content={`${classDetail.learnerQuantity}/${classDetail.learnerLimit}`} />
+          <Field label='Number of Learners' content={`${classDetail.learnerQuantity}/${classDetail.learnerLimit}`} />
         </Grid>
         <Grid item xs={12}>
-          <Field label='Trạng thái' statusTag={classDetail.status} />
+          <Field label='Status' statusTag={classDetail.status} />
         </Grid>
         <Grid item xs={12}>
-          <Field label='Nhà vườn' content={classDetail.garden.name} />
+          <Field label='Gardens' content={classDetail.garden.name} />
         </Grid>
         <Grid item xs={6}>
-          <Field label='Ngày bắt đầu' content={new Date(classDetail.startDate).toLocaleDateString('vi-VN')} />
+          <Field label='Start date' content={new Date(classDetail.startDate).toLocaleDateString('en-US')} />
         </Grid>
         <Grid item xs={6}>
-          <Field label='Thời lượng' content={`${classDetail.duration} tuần`} />
+          <Field label='Duration' content={`${classDetail.duration} weeks`} />
         </Grid>
         <Grid item xs={6}>
-          <Field label='Ngày học trong tuần' weekDays={classDetail.weekdays} />
+          <Field label='Days of week' weekDays={classDetail.weekdays} />
         </Grid>
         <Grid item xs={6}>
-          <Field label='Tiết học' slotNumbers={classDetail.slotNumbers} />
+          <Field label='Slot' slotNumbers={classDetail.slotNumbers} />
         </Grid>
       </Grid>
     </Paper>

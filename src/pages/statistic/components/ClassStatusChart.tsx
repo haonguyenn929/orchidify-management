@@ -64,7 +64,7 @@ const ClassStatusChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Lớp học
+          Classes
         </Typography>
       </Box>
       <ChartDisplay data={chartData.docs} />
@@ -94,7 +94,7 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
     chart: {
       toolbar: { show: false }
     },
-    labels: ['Công khai', 'Đang diễn ra', 'Đã kết thúc', 'Đã hủy'],
+    labels: ['Published', 'In Progress', 'Completed', 'Canceled'],
     colors: ['#FFCF22', '#20C017', '#F66868', '#707070'],
     legend: {
       position: 'bottom',

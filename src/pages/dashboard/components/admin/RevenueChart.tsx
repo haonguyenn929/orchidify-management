@@ -65,7 +65,7 @@ const RevenueChart = () => {
         borderBottom='1px solid #0000001F'
       >
         <Typography fontSize='1.25rem' fontWeight='500'>
-          Doanh thu
+          Revenue
         </Typography>
         <Select
           size='small'
@@ -98,7 +98,7 @@ const ChartDisplay = ({ data }: ChartDisplayProps) => {
   const chartSeries: ApexCharts.ApexOptions['series'] = useMemo(() => {
     const revenue: number[] = []
 
-    const series: ApexCharts.ApexOptions['series'] = [{ name: 'Doanh thu', data: revenue }]
+    const series: ApexCharts.ApexOptions['series'] = [{ name: 'Revenue', data: revenue }]
 
     data.forEach((month) => {
       revenue.push(month.revenue.total)

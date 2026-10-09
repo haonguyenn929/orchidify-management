@@ -21,7 +21,7 @@ const ApproveDialog = ({ recruitmentId, open, handleClose, onSuccess }: DialogPr
     if (error) {
       notifyError(error.message)
     } else {
-      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Chấp nhận ứng viên'))
+      notifySuccess(APP_MESSAGE.ACTION_SUCCESS('Accept Applicant'))
       onSuccess()
     }
     handleClose()
@@ -38,11 +38,11 @@ const ApproveDialog = ({ recruitmentId, open, handleClose, onSuccess }: DialogPr
       handleConfirm={() => handleApprove(recruitmentId)}
       handleCancel={handleCancel}
       isProcessing={isProcessing}
-      title='Xác nhận chấp nhận ứng viên'
-      description={APP_MESSAGE.CONFIRM_ACTION('chấp nhận ứng viên này')}
-      confirmButtonText='Chấp nhận'
+      title='Confirm Accept Applicant'
+      description={APP_MESSAGE.CONFIRM_ACTION('accept this applicant')}
+      confirmButtonText='Accepted'
       confirmButtonColor='secondary'
-      cancelButtonText='Hủy'
+      cancelButtonText='Cancel'
       sx={{ '& .MuiDialog-paper': { width: '500px' } }}
     />
   )

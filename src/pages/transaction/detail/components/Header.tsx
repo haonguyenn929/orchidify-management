@@ -4,7 +4,7 @@ import { protectedRoute } from '~/routes/routes'
 const Header = () => {
   const breadcrumbsItems = [protectedRoute.transactionList, protectedRoute.transactionDetail]
 
-  return <PageHeader title='Chi tiết giao dịch' breadcrumbsItems={breadcrumbsItems} />
+  return <PageHeader title='Transaction Details' breadcrumbsItems={breadcrumbsItems} />
 }
 
 export default Header
